@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://tts1196.github.io/thantintswe-portfolio",
+  "homepage": "https://thantintswe.me",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
