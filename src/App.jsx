@@ -68,26 +68,19 @@ function App() {
   const projects = [
     {
       title: "Secure EC2 Instance with SSM by Terraforming",
-      description: "Full-stack e-commerce platform with microservices architecture, built with React, Node.js, and deployed on AWS.",
+      description: "Infrastructure as Code solution for deploying secure EC2 instances with Systems Manager access using Terraform.",
       technologies: ["AWS", "Terraform Cloud", "IAM", "Role"],
+      keyFeatures: [
+        "EC2 Provisioning via Terraform Cloud",
+        "IAM Role-Based Access Control",
+        "Secure Access with SSM",
+        "Custom Security Group",
+        "Modular and Scalable"
+      ],
       github: "https://github.com/tts1196/Secure-EC2-Instance--SSM-with-Terraform",
       image: project1Image
     }
-    // ,
-    // {
-    //   title: "Cloud Infrastructure Automation",
-    //   description: "Infrastructure as Code solution using Terraform and Ansible for automated cloud deployment and management.",
-    //   technologies: ["Terraform", "Ansible", "AWS", "CI/CD", "Python"],
-    //   github: "https://github.com/thantintswe/cloud-automation",
-    //   demo: null
-    // },
-    // {
-    //   title: "Real-time Analytics Dashboard",
-    //   description: "Real-time data visualization dashboard with WebSocket connections and responsive design.",
-    //   technologies: ["React", "D3.js", "WebSocket", "Express", "PostgreSQL"],
-    //   github: "https://github.com/thantintswe/analytics-dashboard",
-    //   demo: "https://analytics-demo.example.com"
-    // }
+    // Add more projects as needed
   ]
 
   return (
@@ -227,7 +220,11 @@ function App() {
                       <img src={awsLogo} alt="AWS" className="cert-logo" />
                     </div>
                     <div className="cert-info">
-                      <h4 className="cert-title">AWS Solution Architect - Associate</h4>
+                      <h4 className="cert-title">
+                        <a href="https://www.credly.com/badges/4c00d632-a4ce-4b0f-8c66-32e84b95b066/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
+                          AWS Solution Architect - Associate
+                        </a>
+                      </h4>
                       <p className="cert-details">March • 2025</p>
                     </div>
                   </div>
@@ -236,7 +233,11 @@ function App() {
                       <img src={ciscoLogo} alt="Cisco" className="cert-logo" />
                     </div>
                     <div className="cert-info">
-                      <h4 className="cert-title">CCNA</h4>
+                      <h4 className="cert-title">
+                        <a href="https://www.credly.com/badges/3a99629f-eb49-40e7-a188-653ecde91df1/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
+                          CCNA
+                        </a>
+                      </h4>
                       <p className="cert-details">August • 2023</p>
                     </div>
                   </div>
@@ -292,6 +293,11 @@ function App() {
           <div className="projects-list">
             {projects.map((project, index) => (
               <div key={index} className="project-card-fullwidth">
+                {/* Project Title - Full Width at Top */}
+                <div className="project-title-header">
+                  <h3 className="project-title-main">{project.title}</h3>
+                </div>
+                
                 <div className="project-layout-horizontal">
                   {/* Project Diagram/Image - Left Side (70%) */}
                   <div className="project-diagram-right">
@@ -311,8 +317,17 @@ function App() {
                   
                   {/* Project Content - Right Side (30%) */}
                   <div className="project-content-left">
-                    <h3 className="project-title">{project.title}</h3>
                     <p className="project-description">{project.description}</p>
+                    {project.keyFeatures && (
+                      <div className="project-features">
+                        <h4 className="features-title">Key Features:</h4>
+                        <ul className="features-list">
+                          {project.keyFeatures.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="feature-item">{feature}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                     <div className="project-technologies">
                       {project.technologies.map((tech, techIndex) => (
                         <span key={techIndex} className="tech-tag">{tech}</span>
@@ -321,6 +336,7 @@ function App() {
                     <div className="project-links">
                       <a href={project.github} className="project-link" target="_blank" rel="noopener noreferrer">
                         <img src={githubLogo} alt="GitHub" className="github-icon" />
+                        <span className="link-text">Link</span>
                       </a>
                     </div>
                   </div>

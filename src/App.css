@@ -516,6 +516,17 @@ section {
   color: var(--text-primary);
 }
 
+.cert-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cert-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
 .cert-details {
   color: var(--text-secondary);
   font-size: 0.75rem;
@@ -712,12 +723,28 @@ section {
   transform: translateY(-5px);
 }
 
+/* Project Title Header - Full Width */
+.project-title-header {
+  background: var(--gradient);
+  color: white;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.project-title-main {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
 .project-layout-horizontal {
   display: flex;
   flex-direction: row;
   padding: 2rem;
   gap: 2rem;
-  min-height: 300px;
+  min-height: 350px;
+  align-items: stretch;
 }
 
 .project-content-left {
@@ -730,7 +757,8 @@ section {
 
 .project-diagram-right {
   flex: 0 0 70%;
-  min-height: 300px;
+  min-height: 350px;
+  max-height: 450px;
   background: var(--bg-secondary);
   border-radius: 0.5rem;
   border: 2px dashed var(--border-color);
@@ -738,14 +766,17 @@ section {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 1rem;
 }
 
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0.5rem;
   border: none;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .diagram-placeholder {
@@ -782,6 +813,40 @@ section {
   font-size: 1rem;
 }
 
+.project-features {
+  margin: 1rem 0;
+}
+
+.features-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-item {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.feature-item::before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
@@ -808,21 +873,23 @@ section {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.875rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
   background: var(--bg-secondary);
-  border-radius: 50%;
+  border-radius: 2rem;
   border: 2px solid var(--border-color);
+  min-width: 100px;
 }
 
 .project-link:hover {
-  color: var(--primary-dark);
+  color: white;
   background: var(--primary-color);
   border-color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .project-link:hover .github-icon {
@@ -830,9 +897,14 @@ section {
 }
 
 .github-icon {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   transition: filter 0.3s ease;
+}
+
+.link-text {
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 /* Contact Section */
@@ -974,6 +1046,7 @@ section {
     flex-direction: column;
     padding: 1.5rem;
     gap: 1rem;
+    min-height: auto;
   }
 
   .project-content-left {
@@ -984,7 +1057,9 @@ section {
   .project-diagram-right {
     flex: none;
     order: 1;
-    min-height: 200px;
+    min-height: 250px;
+    max-height: 300px;
+    padding: 0.5rem;
   }
 
   .project-title {
