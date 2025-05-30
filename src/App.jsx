@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import awsLogo from './assets/certifications/aws-logo.png'
+import ciscoLogo from './assets/certifications/cisco-logo.png'
+import kubernetesLogo from './assets/certifications/kubernetes-logo.png'
+import terraformLogo from './assets/certifications/terraform-logo.png'
+import project1Image from './assets/projects/project-1.png'
+import githubLogo from './assets/github-logo.svg'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -39,49 +45,49 @@ function App() {
 
   const personalInfo = {
     name: "Than Tint Swe",
-    title: "Cloud Solutions Architect & Full Stack Developer",
-    subtitle: "Passionate about building scalable cloud solutions and innovative web applications",
-    email: "thantintswe@example.com",
-    phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA",
-    linkedin: "linkedin.com/in/thantintswe",
-    github: "github.com/thantintswe"
+    title: "Aspiring Cloud, DevOps & Infrastructure Engineer",
+    subtitle: "Always building, learning, and automating systems in the cloud and beyond.",
+    email: "swethantint@gmail.com",
+    phone: "07091930365",
+    location: "Nagoya",
+    linkedin: "linkedin.com/in/than-tint-swe",
+    github: "github.com/tts1196"
   }
 
   const skills = {
     technical: [
-      "JavaScript", "TypeScript", "React", "Node.js", "Python", "Java",
-      "AWS", "Azure", "Google Cloud", "Docker", "Kubernetes",
-      "MongoDB", "PostgreSQL", "Redis", "GraphQL", "REST APIs"
+      "AWS", "Azure", "Google Cloud", "Python", "Docker","Security", "TCP/IP",
+      "Linux", "Microsoft Windows", "Routing", "Swtiching"
     ],
     tools: [
-      "Git", "Jenkins", "Terraform", "Ansible", "Monitoring Tools",
+      "Git/GitHub", "Kubernetes", "Terraform", "Monitoring Tools",
       "CI/CD Pipelines", "Microservices", "Serverless Architecture"
     ]
   }
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Secure EC2 Instance with SSM by Terraforming",
       description: "Full-stack e-commerce platform with microservices architecture, built with React, Node.js, and deployed on AWS.",
-      technologies: ["React", "Node.js", "AWS", "MongoDB", "Docker"],
-      github: "https://github.com/thantintswe/ecommerce-platform",
-      demo: "https://ecommerce-demo.example.com"
-    },
-    {
-      title: "Cloud Infrastructure Automation",
-      description: "Infrastructure as Code solution using Terraform and Ansible for automated cloud deployment and management.",
-      technologies: ["Terraform", "Ansible", "AWS", "CI/CD", "Python"],
-      github: "https://github.com/thantintswe/cloud-automation",
-      demo: null
-    },
-    {
-      title: "Real-time Analytics Dashboard",
-      description: "Real-time data visualization dashboard with WebSocket connections and responsive design.",
-      technologies: ["React", "D3.js", "WebSocket", "Express", "PostgreSQL"],
-      github: "https://github.com/thantintswe/analytics-dashboard",
-      demo: "https://analytics-demo.example.com"
+      technologies: ["AWS", "Terraform Cloud", "IAM", "Role"],
+      github: "https://github.com/tts1196/Secure-EC2-Instance--SSM-with-Terraform",
+      image: project1Image
     }
+    // ,
+    // {
+    //   title: "Cloud Infrastructure Automation",
+    //   description: "Infrastructure as Code solution using Terraform and Ansible for automated cloud deployment and management.",
+    //   technologies: ["Terraform", "Ansible", "AWS", "CI/CD", "Python"],
+    //   github: "https://github.com/thantintswe/cloud-automation",
+    //   demo: null
+    // },
+    // {
+    //   title: "Real-time Analytics Dashboard",
+    //   description: "Real-time data visualization dashboard with WebSocket connections and responsive design.",
+    //   technologies: ["React", "D3.js", "WebSocket", "Express", "PostgreSQL"],
+    //   github: "https://github.com/thantintswe/analytics-dashboard",
+    //   demo: "https://analytics-demo.example.com"
+    // }
   ]
 
   return (
@@ -190,13 +196,22 @@ function App() {
                     <p className="education-year">2023 - 2026</p>
                     <p className="education-description">
                       <li>
-                         Information Security
+                         The Computing and IT Project
                       </li>
                       <li>
-                        Networking and Cloud Computing
+                        Information Security
                       </li>
                       <li>
-                        Project for Computing
+                        Networking and Systems Development
+                      </li>
+                      <li>
+                        Web, Mobile, and Cloud Technologies
+                      </li>
+                      <li>
+                        Data Management and Analysis
+                      </li>
+                      <li>
+                        Software Engineering
                       </li>
                     </p>
                   </div>
@@ -208,33 +223,41 @@ function App() {
                 <h3 className="subsection-title">Certifications</h3>
                 <div className="certifications-compact">
                   <div className="certification-item">
-                    <div className="cert-icon">☁️</div>
+                    <div className="cert-icon">
+                      <img src={awsLogo} alt="AWS" className="cert-logo" />
+                    </div>
                     <div className="cert-info">
-                      <h4 className="cert-title">AWS Solutions Architect Professional</h4>
-                      <p className="cert-details">Amazon Web Services • 2023</p>
+                      <h4 className="cert-title">AWS Solution Architect - Associate</h4>
+                      <p className="cert-details">March • 2025</p>
                     </div>
                   </div>
                   <div className="certification-item">
-                    <div className="cert-icon">🔵</div>
+                    <div className="cert-icon">
+                      <img src={ciscoLogo} alt="Cisco" className="cert-logo" />
+                    </div>
                     <div className="cert-info">
-                      <h4 className="cert-title">Azure Solutions Architect Expert</h4>
-                      <p className="cert-details">Microsoft • 2022</p>
+                      <h4 className="cert-title">CCNA</h4>
+                      <p className="cert-details">August • 2023</p>
                     </div>
                   </div>
-                  <div className="certification-item">
-                    <div className="cert-icon">⚡</div>
-                    <div className="cert-info">
-                      <h4 className="cert-title">Google Cloud Professional Cloud Architect</h4>
-                      <p className="cert-details">Google Cloud • 2023</p>
+                  {/* <div className="certification-item">
+                    <div className="cert-icon">
+                      <img src={kubernetesLogo} alt="Kubernetes" className="cert-logo" />
                     </div>
-                  </div>
-                  <div className="certification-item">
-                    <div className="cert-icon">🐳</div>
                     <div className="cert-info">
                       <h4 className="cert-title">Certified Kubernetes Administrator</h4>
-                      <p className="cert-details">Cloud Native Computing Foundation • 2022</p>
+                      <p className="cert-details">June • 2025</p>
                     </div>
                   </div>
+                  <div className="certification-item">
+                    <div className="cert-icon">
+                      <img src={terraformLogo} alt="Terraform" className="cert-logo" />
+                    </div>
+                    <div className="cert-info">
+                      <h4 className="cert-title">Terraform Associate</h4>
+                      <p className="cert-details">June • 2025</p>
+                    </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -266,26 +289,40 @@ function App() {
       <section id="projects" className="section">
         <div className="container">
           <h2 className="section-title">Featured Projects</h2>
-          <div className="projects-grid">
+          <div className="projects-list">
             {projects.map((project, index) => (
-              <div key={index} className="project-card">
-                <div className="project-content">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-technologies">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className="tech-tag">{tech}</span>
-                    ))}
-                  </div>
-                  <div className="project-links">
-                    <a href={project.github} className="project-link" target="_blank" rel="noopener noreferrer">
-                      GitHub
-                    </a>
-                    {project.demo && (
-                      <a href={project.demo} className="project-link" target="_blank" rel="noopener noreferrer">
-                        Live Demo
-                      </a>
+              <div key={index} className="project-card-fullwidth">
+                <div className="project-layout-horizontal">
+                  {/* Project Diagram/Image - Left Side (70%) */}
+                  <div className="project-diagram-right">
+                    {project.image ? (
+                      <img 
+                        src={project.image} 
+                        alt={`${project.title} Architecture`}
+                        className="project-image"
+                      />
+                    ) : (
+                      <div className="diagram-placeholder">
+                        <span className="diagram-icon">🏗️</span>
+                        <p>Project Architecture</p>
+                      </div>
                     )}
+                  </div>
+                  
+                  {/* Project Content - Right Side (30%) */}
+                  <div className="project-content-left">
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-description">{project.description}</p>
+                    <div className="project-technologies">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span key={techIndex} className="tech-tag">{tech}</span>
+                      ))}
+                    </div>
+                    <div className="project-links">
+                      <a href={project.github} className="project-link" target="_blank" rel="noopener noreferrer">
+                        <img src={githubLogo} alt="GitHub" className="github-icon" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -331,23 +368,6 @@ function App() {
                   </a>
                 </div>
               </div>
-            </div>
-            <div className="contact-form">
-              <form className="form">
-                <div className="form-group">
-                  <input type="text" placeholder="Your Name" className="form-input" required />
-                </div>
-                <div className="form-group">
-                  <input type="email" placeholder="Your Email" className="form-input" required />
-                </div>
-                <div className="form-group">
-                  <input type="text" placeholder="Subject" className="form-input" required />
-                </div>
-                <div className="form-group">
-                  <textarea placeholder="Your Message" className="form-textarea" rows="5" required></textarea>
-                </div>
-                <button type="submit" className="btn btn-primary btn-full">Send Message</button>
-              </form>
             </div>
           </div>
         </div>
