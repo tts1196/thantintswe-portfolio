@@ -3,18 +3,32 @@ import './App.css'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // Smooth scrolling effect
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+      setActiveSection(sectionId)
+      setIsMenuOpen(false)
+    }
+  }
+
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'skills', 'contact']
+      const sections = ['home', 'about', 'projects', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
         const element = document.getElementById(section)
-        if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
-          setActiveSection(section)
-          break
+        if (element) {
+          const offsetTop = element.offsetTop
+          const offsetHeight = element.offsetHeight
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section)
+            break
+          }
         }
       }
     }
@@ -23,95 +37,225 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+  const personalInfo = {
+    name: "Than Tint Swe",
+    title: "Cloud Solutions Architect & Full Stack Developer",
+    subtitle: "Passionate about building scalable cloud solutions and innovative web applications",
+    email: "thantintswe@example.com",
+    phone: "+1 (555) 123-4567",
+    location: "San Francisco, CA",
+    linkedin: "linkedin.com/in/thantintswe",
+    github: "github.com/thantintswe"
   }
+
+  const skills = {
+    technical: [
+      "JavaScript", "TypeScript", "React", "Node.js", "Python", "Java",
+      "AWS", "Azure", "Google Cloud", "Docker", "Kubernetes",
+      "MongoDB", "PostgreSQL", "Redis", "GraphQL", "REST APIs"
+    ],
+    tools: [
+      "Git", "Jenkins", "Terraform", "Ansible", "Monitoring Tools",
+      "CI/CD Pipelines", "Microservices", "Serverless Architecture"
+    ]
+  }
+
+  const projects = [
+    {
+      title: "E-Commerce Platform",
+      description: "Full-stack e-commerce platform with microservices architecture, built with React, Node.js, and deployed on AWS.",
+      technologies: ["React", "Node.js", "AWS", "MongoDB", "Docker"],
+      github: "https://github.com/thantintswe/ecommerce-platform",
+      demo: "https://ecommerce-demo.example.com"
+    },
+    {
+      title: "Cloud Infrastructure Automation",
+      description: "Infrastructure as Code solution using Terraform and Ansible for automated cloud deployment and management.",
+      technologies: ["Terraform", "Ansible", "AWS", "CI/CD", "Python"],
+      github: "https://github.com/thantintswe/cloud-automation",
+      demo: null
+    },
+    {
+      title: "Real-time Analytics Dashboard",
+      description: "Real-time data visualization dashboard with WebSocket connections and responsive design.",
+      technologies: ["React", "D3.js", "WebSocket", "Express", "PostgreSQL"],
+      github: "https://github.com/thantintswe/analytics-dashboard",
+      demo: "https://analytics-demo.example.com"
+    }
+  ]
 
   return (
     <div className="App">
       {/* Navigation */}
       <nav className="navbar">
-        <div className="nav-container">
-          <div className="nav-logo">
-            <span>Than Tint Swe</span>
+        <div className="container">
+          <div className="nav-content">
+            <div className="nav-links-wrapper">
+              <ul className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
+                {[
+                  { id: 'home', label: 'Home' },
+                  { id: 'about', label: 'About Me' },
+                  { id: 'projects', label: 'Projects' },
+                  { id: 'contact', label: 'Contact' }
+                ].map((item) => (
+                  <li key={item.id} className="nav-item">
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className={`nav-link ${activeSection === item.id ? 'nav-link-active' : ''}`}
+                      aria-label={`Navigate to ${item.label}`}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <button 
+              className="mobile-menu-btn"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
-          <ul className="nav-menu">
-            {['home', 'about', 'projects', 'skills', 'contact'].map((section) => (
-              <li key={section} className="nav-item">
-                <button
-                  className={`nav-link ${activeSection === section ? 'active' : ''}`}
-                  onClick={() => scrollToSection(section)}
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </button>
-              </li>
-            ))}
-          </ul>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section id="home" className="hero">
-        <div className="hero-container">
+        <div className="container">
           <div className="hero-content">
-            <h1 className="hero-title">
-              Hi, I'm <span className="gradient-text">Than Tint Swe</span>
-            </h1>
-            <h2 className="hero-subtitle">Full Stack Developer</h2>
-            <p className="hero-description">
-              I create beautiful, responsive web applications with modern technologies.
-              Passionate about clean code, user experience, and bringing ideas to life.
-            </p>
-            <div className="hero-buttons">
-              <button className="btn btn-primary" onClick={() => scrollToSection('projects')}>
-                View My Work
-              </button>
-              <button className="btn btn-secondary" onClick={() => scrollToSection('contact')}>
-                Get In Touch
-              </button>
-            </div>
-          </div>
-          <div className="hero-image">
-            <div className="profile-card">
-              <div className="profile-image">
-                <div className="image-placeholder">TTS</div>
+            <div className="hero-text">
+              <h1 className="hero-title">
+                Hi, I'm <span className="gradient-text">{personalInfo.name}</span>
+              </h1>
+              <h2 className="hero-subtitle">{personalInfo.title}</h2>
+              <p className="hero-description">{personalInfo.subtitle}</p>
+              <div className="hero-buttons">
+                <button onClick={() => scrollToSection('projects')} className="btn btn-primary">
+                  View My Work
+                </button>
+                <button onClick={() => scrollToSection('contact')} className="btn btn-secondary">
+                  Get In Touch
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="about">
+      {/* About, Education & Certifications Combined Section */}
+      <section id="about" className="section">
         <div className="container">
           <h2 className="section-title">About Me</h2>
-          <div className="about-content">
-            <div className="about-text">
-              <p>
-                I'm a passionate full-stack developer with expertise in modern web technologies.
-                I love creating efficient, scalable solutions and have experience working with
-                both frontend and backend technologies.
-              </p>
-              <p>
-                When I'm not coding, you can find me exploring new technologies, contributing to
-                open source projects, or sharing knowledge with the developer community.
-              </p>
-              <div className="about-stats">
-                <div className="stat">
-                  <h3>3+</h3>
-                  <p>Years Experience</p>
+          <div className="about-education-layout">
+            {/* Left Side - About Content (70%) */}
+            <div className="about-content">
+              <div className="about-text">
+                <p className="about-description">
+                  Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, with a passion for building, automating, and securing systems across both cloud and traditional infrastructure environments. 
+                  I'm currently pursuing a BSc (Hons) in Computing from The Open University UK (graduating in September 2026) while working at Meisei Co.,Ltd.
+                </p>
+                <p className="about-description">
+                  My technical interests include cloud infrastructure, DevOps, networking, and system administration. 
+                  I enjoy working with tools like AWS, Terraform, Linux, Git, and Docker, 
+                  and I regularly build hands-on projects to apply real-world architecture and automation practices. 
+                  I’m also planning to take the JLPT N2 exam in December 2025 as part of my ongoing language learning.
+                </p>
+                <p className="about-description">
+                  I’m currently seeking entry-level roles in Cloud, DevOps, Infrastructure, or IT engineering, 
+                  with the goal of transitioning into a full-time technical role by September 2025. I’m motivated, detail-oriented, and always eager to learn and grow within a collaborative engineering team.
+                </p>
+                <p className="about-description">
+                  Thanks for stopping by my portfolio — 
+                  feel free to connect if you’re working on something exciting or looking for a motivated junior engineer!
+                </p>
+                
+              </div>
+            </div>
+
+            {/* Right Side - Education & Certifications (30%) */}
+            <div className="right-sidebar">
+              {/* Education Subsection */}
+              <div id="education" className="education-section">
+                <h3 className="subsection-title">Education</h3>
+                <div className="education-item-compact">
+                  <div className="education-icon">🎓</div>
+                  <div className="education-details">
+                    <h4 className="education-degree">BSc (Hons) in Computer Engineering</h4>
+                    <p className="education-school">The Open University - Milton Keynes, England</p>
+                    <p className="education-year">2023 - 2026</p>
+                    <p className="education-description">
+                      <li>
+                         Information Security
+                      </li>
+                      <li>
+                        Networking and Cloud Computing
+                      </li>
+                      <li>
+                        Project for Computing
+                      </li>
+                    </p>
+                  </div>
                 </div>
-                <div className="stat">
-                  <h3>50+</h3>
-                  <p>Projects Completed</p>
+              </div>
+
+              {/* Certifications Subsection */}
+              <div id="certifications" className="certifications-section">
+                <h3 className="subsection-title">Certifications</h3>
+                <div className="certifications-compact">
+                  <div className="certification-item">
+                    <div className="cert-icon">☁️</div>
+                    <div className="cert-info">
+                      <h4 className="cert-title">AWS Solutions Architect Professional</h4>
+                      <p className="cert-details">Amazon Web Services • 2023</p>
+                    </div>
+                  </div>
+                  <div className="certification-item">
+                    <div className="cert-icon">🔵</div>
+                    <div className="cert-info">
+                      <h4 className="cert-title">Azure Solutions Architect Expert</h4>
+                      <p className="cert-details">Microsoft • 2022</p>
+                    </div>
+                  </div>
+                  <div className="certification-item">
+                    <div className="cert-icon">⚡</div>
+                    <div className="cert-info">
+                      <h4 className="cert-title">Google Cloud Professional Cloud Architect</h4>
+                      <p className="cert-details">Google Cloud • 2023</p>
+                    </div>
+                  </div>
+                  <div className="certification-item">
+                    <div className="cert-icon">🐳</div>
+                    <div className="cert-info">
+                      <h4 className="cert-title">Certified Kubernetes Administrator</h4>
+                      <p className="cert-details">Cloud Native Computing Foundation • 2022</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="stat">
-                  <h3>10+</h3>
-                  <p>Technologies</p>
-                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Skills Section - Full Width Below */}
+          <div className="skills-content">
+            <div className="skills-category">
+              <h3 className="skills-category-title">Technical Skills</h3>
+              <div className="skills-grid">
+                {skills.technical.map((skill, index) => (
+                  <div key={index} className="skill-tag">{skill}</div>
+                ))}
+              </div>
+            </div>
+            <div className="skills-category">
+              <h3 className="skills-category-title">Tools & Technologies</h3>
+              <div className="skills-grid">
+                {skills.tools.map((tool, index) => (
+                  <div key={index} className="skill-tag">{tool}</div>
+                ))}
               </div>
             </div>
           </div>
@@ -119,162 +263,92 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="projects">
+      <section id="projects" className="section">
         <div className="container">
           <h2 className="section-title">Featured Projects</h2>
           <div className="projects-grid">
-            <div className="project-card">
-              <div className="project-image">
-                <div className="project-placeholder">E-Commerce App</div>
-              </div>
-              <div className="project-content">
-                <h3>E-Commerce Platform</h3>
-                <p>Full-stack e-commerce application with React, Node.js, and MongoDB</p>
-                <div className="project-tech">
-                  <span>React</span>
-                  <span>Node.js</span>
-                  <span>MongoDB</span>
-                </div>
-                <div className="project-links">
-                  <a href="#" className="btn btn-small">Live Demo</a>
-                  <a href="#" className="btn btn-small btn-outline">Code</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="project-card">
-              <div className="project-image">
-                <div className="project-placeholder">Task Manager</div>
-              </div>
-              <div className="project-content">
-                <h3>Task Management App</h3>
-                <p>Collaborative task management tool with real-time updates</p>
-                <div className="project-tech">
-                  <span>React</span>
-                  <span>Firebase</span>
-                  <span>Material-UI</span>
-                </div>
-                <div className="project-links">
-                  <a href="#" className="btn btn-small">Live Demo</a>
-                  <a href="#" className="btn btn-small btn-outline">Code</a>
+            {projects.map((project, index) => (
+              <div key={index} className="project-card">
+                <div className="project-content">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-technologies">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span key={techIndex} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                  <div className="project-links">
+                    <a href={project.github} className="project-link" target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                    {project.demo && (
+                      <a href={project.demo} className="project-link" target="_blank" rel="noopener noreferrer">
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="project-card">
-              <div className="project-image">
-                <div className="project-placeholder">Weather App</div>
-              </div>
-              <div className="project-content">
-                <h3>Weather Dashboard</h3>
-                <p>Beautiful weather app with location-based forecasts</p>
-                <div className="project-tech">
-                  <span>React</span>
-                  <span>API</span>
-                  <span>CSS3</span>
-                </div>
-                <div className="project-links">
-                  <a href="#" className="btn btn-small">Live Demo</a>
-                  <a href="#" className="btn btn-small btn-outline">Code</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="skills">
-        <div className="container">
-          <h2 className="section-title">Skills & Technologies</h2>
-          <div className="skills-grid">
-            <div className="skill-category">
-              <h3>Frontend</h3>
-              <div className="skill-items">
-                <span>React</span>
-                <span>JavaScript</span>
-                <span>TypeScript</span>
-                <span>HTML5</span>
-                <span>CSS3</span>
-                <span>Tailwind CSS</span>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h3>Backend</h3>
-              <div className="skill-items">
-                <span>Node.js</span>
-                <span>Python</span>
-                <span>Express.js</span>
-                <span>PostgreSQL</span>
-                <span>MongoDB</span>
-                <span>REST APIs</span>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h3>Tools & Others</h3>
-              <div className="skill-items">
-                <span>Git</span>
-                <span>Docker</span>
-                <span>AWS</span>
-                <span>Figma</span>
-                <span>VS Code</span>
-                <span>Agile</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="contact">
+      <section id="contact" className="section bg-secondary">
         <div className="container">
           <h2 className="section-title">Get In Touch</h2>
           <div className="contact-content">
             <div className="contact-info">
-              <h3>Let's work together!</h3>
-              <p>
-                I'm always interested in new opportunities and interesting projects.
-                Whether you have a question or just want to say hi, feel free to reach out!
+              <h3 className="contact-subtitle">Let's work together</h3>
+              <p className="contact-description">
+                I'm always interested in new opportunities and challenging projects. 
+                Feel free to reach out if you'd like to discuss potential collaborations.
               </p>
-              <div className="contact-methods">
-                <div className="contact-method">
+              <div className="contact-details">
+                <div className="contact-item">
                   <span className="contact-icon">📧</span>
-                  <div>
-                    <h4>Email</h4>
-                    <p>thantintswe@example.com</p>
-                  </div>
+                  <span className="contact-text">{personalInfo.email}</span>
                 </div>
-                <div className="contact-method">
+                <div className="contact-item">
                   <span className="contact-icon">📱</span>
-                  <div>
-                    <h4>Phone</h4>
-                    <p>+1 (555) 123-4567</p>
-                  </div>
+                  <span className="contact-text">{personalInfo.phone}</span>
                 </div>
-                <div className="contact-method">
+                <div className="contact-item">
                   <span className="contact-icon">📍</span>
-                  <div>
-                    <h4>Location</h4>
-                    <p>San Francisco, CA</p>
-                  </div>
+                  <span className="contact-text">{personalInfo.location}</span>
+                </div>
+                <div className="contact-item">
+                  <span className="contact-icon">💼</span>
+                  <a href={`https://${personalInfo.linkedin}`} className="contact-link" target="_blank" rel="noopener noreferrer">
+                    {personalInfo.linkedin}
+                  </a>
+                </div>
+                <div className="contact-item">
+                  <span className="contact-icon">🔗</span>
+                  <a href={`https://${personalInfo.github}`} className="contact-link" target="_blank" rel="noopener noreferrer">
+                    {personalInfo.github}
+                  </a>
                 </div>
               </div>
             </div>
-            <form className="contact-form">
-              <div className="form-group">
-                <input type="text" placeholder="Your Name" required />
-              </div>
-              <div className="form-group">
-                <input type="email" placeholder="Your Email" required />
-              </div>
-              <div className="form-group">
-                <input type="text" placeholder="Subject" required />
-              </div>
-              <div className="form-group">
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-              </div>
-              <button type="submit" className="btn btn-primary">Send Message</button>
-            </form>
+            <div className="contact-form">
+              <form className="form">
+                <div className="form-group">
+                  <input type="text" placeholder="Your Name" className="form-input" required />
+                </div>
+                <div className="form-group">
+                  <input type="email" placeholder="Your Email" className="form-input" required />
+                </div>
+                <div className="form-group">
+                  <input type="text" placeholder="Subject" className="form-input" required />
+                </div>
+                <div className="form-group">
+                  <textarea placeholder="Your Message" className="form-textarea" rows="5" required></textarea>
+                </div>
+                <button type="submit" className="btn btn-primary btn-full">Send Message</button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -283,12 +357,8 @@ function App() {
       <footer className="footer">
         <div className="container">
           <div className="footer-content">
-            <p>&copy; 2025 Than Tint Swe. All rights reserved.</p>
-            <div className="social-links">
-              <a href="#" aria-label="GitHub">GitHub</a>
-              <a href="#" aria-label="LinkedIn">LinkedIn</a>
-              <a href="#" aria-label="Twitter">Twitter</a>
-            </div>
+            <p>&copy; 2025 {personalInfo.name}. All rights reserved.</p>
+            <p>Built with React & Vite</p>
           </div>
         </div>
       </footer>
