@@ -5,6 +5,7 @@ import ciscoLogo from './assets/certifications/cisco-logo.png'
 import kubernetesLogo from './assets/certifications/kubernetes-logo.png'
 import terraformLogo from './assets/certifications/terraform-logo.png'
 import project1Image from './assets/projects/project-1.png'
+import project2Image from './assets/projects/project-2.png'
 import githubLogo from './assets/github-logo.svg'
 
 function App() {
@@ -48,8 +49,8 @@ function App() {
     title: "Aspiring Cloud, DevOps & Infrastructure Engineer",
     subtitle: "Always building, learning, and automating systems in the cloud and beyond.",
     email: "swethantint@gmail.com",
-    phone: "07091930365",
-    location: "Nagoya",
+    phone: "+81 70-9193-0365",
+    location: "Nagoya, Japan",
     linkedin: "linkedin.com/in/than-tint-swe",
     github: "github.com/tts1196"
   }
@@ -79,6 +80,20 @@ function App() {
       ],
       github: "https://github.com/tts1196/Secure-EC2-Instance--SSM-with-Terraform",
       image: project1Image
+    },
+    {
+      title: "2-Tier Web Application with AWS",
+      description: "Scalable web application deployed on AWS using a 2-tier architecture with EC2, RDS, and Load Balancer for high availability.",
+      technologies: ["AWS", "EC2", "RDS", "ALB", "VPC"],
+      keyFeatures: [
+        "Auto Scaling Group Configuration",
+        "Application Load Balancer Setup",
+        "RDS Database Integration",
+        "VPC with Public/Private Subnets",
+        "Security Groups and NACLs"
+      ],
+      github: "https://github.com/tts1196/2-tier-web-app",
+      image: project2Image
     }
     // Add more projects as needed
   ]
@@ -360,25 +375,25 @@ function App() {
               </p>
               <div className="contact-details">
                 <div className="contact-item">
-                  <span className="contact-icon">📧</span>
+                  <span className="contact-icon">🏠📩</span>
                   <span className="contact-text">{personalInfo.email}</span>
                 </div>
                 <div className="contact-item">
-                  <span className="contact-icon">📱</span>
+                  <span className="contact-icon">📞</span>
                   <span className="contact-text">{personalInfo.phone}</span>
                 </div>
                 <div className="contact-item">
-                  <span className="contact-icon">📍</span>
+                  <span className="contact-icon">🏠︎</span>
                   <span className="contact-text">{personalInfo.location}</span>
                 </div>
                 <div className="contact-item">
-                  <span className="contact-icon">💼</span>
+                  <span className="contact-icon">🌐</span>
                   <a href={`https://${personalInfo.linkedin}`} className="contact-link" target="_blank" rel="noopener noreferrer">
                     {personalInfo.linkedin}
                   </a>
                 </div>
                 <div className="contact-item">
-                  <span className="contact-icon">🔗</span>
+                  <span className="contact-icon">🌐</span>
                   <a href={`https://${personalInfo.github}`} className="contact-link" target="_blank" rel="noopener noreferrer">
                     {personalInfo.github}
                   </a>
