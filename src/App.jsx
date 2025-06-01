@@ -47,7 +47,9 @@ function App() {
   const personalInfo = {
     name: "Than Tint Swe",
     title: "Aspiring Cloud, DevOps & Infrastructure Engineer",
+    titleJa: "クラウド・DevOps・インフラエンジニア志望",
     subtitle: "Always building, learning, and automating systems in the cloud and beyond.",
+    subtitleJa: "よろしくお願いいたします。一緒に働ける機会を楽しみにしています。",
     email: "swethantint@gmail.com",
     phone: "+81 70-9193-0365",
     location: "Nagoya, Japan",
@@ -68,22 +70,9 @@ function App() {
 
   const projects = [
     {
-      title: "Secure EC2 Instance with SSM by Terraforming",
-      description: "Infrastructure as Code solution for deploying secure EC2 instances with Systems Manager access using Terraform.",
-      technologies: ["AWS", "Terraform Cloud", "IAM", "Role"],
-      keyFeatures: [
-        "EC2 Provisioning via Terraform Cloud",
-        "IAM Role-Based Access Control",
-        "Secure Access with SSM",
-        "Custom Security Group",
-        "Modular and Scalable"
-      ],
-      github: "https://github.com/tts1196/Secure-EC2-Instance--SSM-with-Terraform",
-      image: project1Image
-    },
-    {
       title: "2-Tier Web Application with AWS",
       description: "Scalable web application deployed on AWS using a 2-tier architecture with EC2, RDS, and Load Balancer for high availability.",
+      descriptionJa: "EC2、RDS、ロードバランサーを使用した2層アーキテクチャでAWSにデプロイされた高可用性のスケーラブルなWebアプリケーションです。",
       technologies: ["AWS", "EC2", "RDS", "ALB", "VPC"],
       keyFeatures: [
         "Auto Scaling Group Configuration",
@@ -94,7 +83,22 @@ function App() {
       ],
       github: "https://github.com/tts1196/2-tier-web-app",
       image: project2Image
-    }
+    },
+    {
+      title: "Secure EC2 Instance with SSM by Terraforming",
+      description: "Infrastructure as Code solution for deploying secure EC2 instances with Systems Manager access using Terraform.",
+      descriptionJa: "Terraformを使用してSystems Managerアクセスを持つセキュアなEC2インスタンスをデプロイするInfrastructure as Codeソリューションです。",
+      technologies: ["AWS", "Terraform Cloud", "IAM", "Role"],
+      keyFeatures: [
+        "EC2 Provisioning via Terraform Cloud",
+        "IAM Role-Based Access Control",
+        "Secure Access with SSM",
+        "Custom Security Group",
+        "Modular and Scalable"
+      ],
+      github: "https://github.com/tts1196/Secure-EC2-Instance--SSM-with-Terraform",
+      image: project1Image
+    }    
     // Add more projects as needed
   ]
 
@@ -147,7 +151,9 @@ function App() {
                 Hi, I'm <span className="gradient-text">{personalInfo.name}</span>
               </h1>
               <h2 className="hero-subtitle">{personalInfo.title}</h2>
+              <h3 className="hero-subtitle-ja">{personalInfo.titleJa}</h3>
               <p className="hero-description">{personalInfo.subtitle}</p>
+              <p className="hero-description-ja">{personalInfo.subtitleJa}</p>
               <div className="hero-buttons">
                 <button onClick={() => scrollToSection('projects')} className="btn btn-primary">
                   View My Work
@@ -177,15 +183,18 @@ function App() {
                   My technical interests include cloud infrastructure, DevOps, networking, and system administration. 
                   I enjoy working with tools like AWS, Terraform, Linux, Git, and Docker, 
                   and I regularly build hands-on projects to apply real-world architecture and automation practices. 
-                  I’m also planning to take the JLPT N2 exam in December 2025 as part of my ongoing language learning.
+                  I'm also planning to take the JLPT N2 exam in December 2025 as part of my ongoing language learning.
                 </p>
                 <p className="about-description">
-                  I’m currently seeking entry-level roles in Cloud, DevOps, Infrastructure, or IT engineering, 
-                  with the goal of transitioning into a full-time technical role by September 2025. I’m motivated, detail-oriented, and always eager to learn and grow within a collaborative engineering team.
+                  I'm currently seeking entry-level roles in Cloud, DevOps, Infrastructure, or IT engineering, 
+                  with the goal of transitioning into a full-time technical role by September 2025. I'm motivated, detail-oriented, and always eager to learn and grow within a collaborative engineering team.
                 </p>
                 <p className="about-description">
                   Thanks for stopping by my portfolio — 
-                  feel free to connect if you’re working on something exciting or looking for a motivated junior engineer!
+                  feel free to connect if you're working on something exciting or looking for a motivated junior engineer!
+                </p>
+                <p className="about-description-ja">
+                  ポートフォリオをご覧いただき、ありがとうございます。エントリーレベルのポジションで成長し、貢献できる機会を探しています。ご連絡をお待ちしております！
                 </p>
                 
               </div>
@@ -305,6 +314,7 @@ function App() {
       <section id="projects" className="section">
         <div className="container">
           <h2 className="section-title">Featured Projects</h2>
+          <p className="section-subtitle-ja">主要なプロジェクト</p>
           <div className="projects-list">
             {projects.map((project, index) => (
               <div key={index} className="project-card-fullwidth">
@@ -333,6 +343,7 @@ function App() {
                   {/* Project Content - Right Side (30%) */}
                   <div className="project-content-left">
                     <p className="project-description">{project.description}</p>
+                    <p className="project-description-ja">{project.descriptionJa}</p>
                     {project.keyFeatures && (
                       <div className="project-features">
                         <h4 className="features-title">Key Features:</h4>
@@ -375,7 +386,7 @@ function App() {
               </p>
               <div className="contact-details">
                 <div className="contact-item">
-                  <span className="contact-icon">🏠📩</span>
+                  <span className="contact-icon">📩</span>
                   <span className="contact-text">{personalInfo.email}</span>
                 </div>
                 <div className="contact-item">

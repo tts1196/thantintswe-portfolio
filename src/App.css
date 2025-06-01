@@ -220,15 +220,31 @@ body {
 .hero-subtitle {
   font-size: 1.5rem;
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   font-weight: 600;
+}
+
+.hero-subtitle-ja {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .hero-description {
   font-size: 1.1rem;
   color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.hero-description-ja {
+  font-size: 1rem;
+  color: var(--text-light);
   margin-bottom: 2.5rem;
   line-height: 1.7;
+  font-style: italic;
 }
 
 /* Hero Content Layout */
@@ -322,8 +338,16 @@ section {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   position: relative;
+}
+
+.section-subtitle-ja {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 3rem;
+  font-style: italic;
 }
 
 .section-title::after {
@@ -550,6 +574,18 @@ section {
   color: var(--text-secondary);
   margin-bottom: 2rem;
   line-height: 2;
+}
+
+.about-description-ja {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  font-style: italic;
+  padding: 1rem;
+  background-color: var(--bg-secondary);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 4px;
 }
 
 .about-stats {
@@ -813,6 +849,16 @@ section {
   font-size: 1rem;
 }
 
+.project-description-ja {
+  color: var(--text-light);
+  margin: 0.5rem 0 1rem 0;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  font-style: italic;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 0.75rem;
+}
+
 .project-features {
   margin: 1rem 0;
 }
@@ -923,14 +969,30 @@ section {
 .contact-subtitle {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--text-primary);
+}
+
+.contact-subtitle-ja {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  font-style: italic;
 }
 
 .contact-description {
   color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.contact-description-ja {
+  color: var(--text-light);
   margin-bottom: 2rem;
   line-height: 1.6;
+  font-style: italic;
+  font-size: 0.95rem;
 }
 
 .contact-details {
