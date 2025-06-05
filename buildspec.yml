@@ -1,0 +1,59 @@
+version: 0.2
+
+env:
+  variables:
+    NODE_VERSION: "18"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: $NODE_VERSION
+    commands:
+      - echo "Installing dependencies..."
+      - npm ci --only=production
+
+  pre_build:
+    commands:
+      - echo "Running pre-build commands..."
+      - echo "Node.js version:"
+      - node --version
+      - echo "npm version:"
+      - npm --version
+
+  build:
+    commands:
+      - echo "Building the React application..."
+      - npm run build
+      - echo "Build completed successfully"
+      - echo "Contents of dist directory:"
+      - ls -la dist/
+
+  post_build:
+    commands:
+      - echo "Starting deployment to S3..."
+      - echo "Website bucket: $WEBSITE_BUCKET"
+      - echo "CloudFront distribution: $CLOUDFRONT_DISTRIBUTION_ID"
+      
+      # Sync built files to S3
+      - aws s3 sync ./dist s3://$WEBSITE_BUCKET --delete --exact-timestamps
+      
+      # Set proper content types
+      - aws s3 cp s3://$WEBSITE_BUCKET s3://$WEBSITE_BUCKET --recursive --metadata-directive REPLACE --content-type "text/html" --exclude "*" --include "*.html"
+      - aws s3 cp s3://$WEBSITE_BUCKET s3://$WEBSITE_BUCKET --recursive --metadata-directive REPLACE --content-type "text/css" --exclude "*" --include "*.css"
+      - aws s3 cp s3://$WEBSITE_BUCKET s3://$WEBSITE_BUCKET --recursive --metadata-directive REPLACE --content-type "application/javascript" --exclude "*" --include "*.js"
+      
+      # Create CloudFront invalidation for cache refresh
+      - echo "Creating CloudFront invalidation..."
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+      
+      - echo "Deployment completed successfully!"
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
+  name: portfolio-website-artifacts
+
+cache:
+  paths:
+    - 'node_modules/**/*'
