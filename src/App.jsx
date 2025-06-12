@@ -144,7 +144,8 @@ function App() {
     },
     skills: {
       technical: { en: "Technical Skills", ja: "技術スキル" },
-      tools: { en: "Tools & Technologies", ja: "ツール・テクノロジー" }
+      tools: { en: "Tools & Technologies", ja: "ツール・テクノロジー" },
+      languages: { en: "Language Proficiency", ja: "語学力" }
     },
     projects: {
       title: { en: "Featured Projects", ja: "主要なプロジェクト" },
@@ -180,6 +181,11 @@ function App() {
     tools: [
       "Git/GitHub", "Kubernetes", "Terraform", "Monitoring Tools",
       "CI/CD Pipelines", "Microservices", "Serverless Architecture"
+    ],
+    languages: [
+      { en: "Burmese (Native)", ja: "ビルマ語（母国語）" },
+      { en: "Japanese (Intermediate - N3)", ja: "日本語（中級 - N3レベル）" },
+      { en: "English (Professional Working)", ja: "英語（ビジネス会話レベル）" }
     ]
   }
 
@@ -442,6 +448,14 @@ function App() {
                 ))}
               </div>
             </div>
+            <div className="skills-category">
+              <h3 className="skills-category-title">{content.skills.languages[language]}</h3>
+              <div className="skills-grid">
+                {skills.languages.map((lang, index) => (
+                  <div key={index} className="skill-tag">{lang[language]}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -518,8 +532,8 @@ function App() {
               <h3 className="resume-title">{content.resume.files.resume[language]}</h3>
               <p className="resume-description">
                 {language === 'en' 
-                  ? 'Professional resume in English format, perfect for international opportunities. Currently being prepared.'
-                  : '国際的な機会に最適な英語形式のプロフェッショナルレジュメです。現在準備中です。'
+                  ? 'Currently being prepared.'
+                  : '現在準備中です。'
                 }
               </p>
               <button 
@@ -535,8 +549,8 @@ function App() {
               <h3 className="resume-title">{content.resume.files.rirekisho[language]}</h3>
               <p className="resume-description">
                 {language === 'en' 
-                  ? 'Traditional Japanese resume format (履歴書) for Japanese companies.'
-                  : '日本企業向けの従来の日本語履歴書形式です。'
+                  ? ''
+                  : ''
                 }
               </p>
               <button 
@@ -552,8 +566,8 @@ function App() {
               <h3 className="resume-title">{content.resume.files.shokureki[language]}</h3>
               <p className="resume-description">
                 {language === 'en' 
-                  ? 'Detailed career history document (職務経歴書) highlighting professional experience.'
-                  : 'プロフェッショナルな経験を強調した詳細な職務経歴書です。'
+                  ? ''
+                  : ''
                 }
               </p>
               <button 
