@@ -32,6 +32,28 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Enhanced text rendering for multilingual content */
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Japanese text improvements */
+p, li, span, div {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  letter-spacing: 0.01em;
+}
+
+/* Improved line height for Japanese content */
+.App[data-lang="ja"] p,
+.App[data-lang="ja"] li,
+.App[data-lang="ja"] span {
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
 .App {
   min-height: 100vh;
 }
@@ -256,6 +278,7 @@ body {
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .hero-subtitle-ja {
@@ -270,7 +293,8 @@ body {
   font-size: 1.1rem;
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
-  line-height: 1.7;
+  line-height: 1.8;
+  word-break: break-word;
 }
 
 .hero-description-ja {
@@ -608,18 +632,22 @@ section {
   color: var(--text-secondary);
   margin-bottom: 2rem;
   line-height: 2;
+  word-break: break-word;
+  letter-spacing: 0.01em;
 }
 
 .about-description-ja {
   font-size: 1.1rem;
   color: var(--text-light);
   margin-bottom: 2rem;
-  line-height: 1.8;
+  line-height: 2;
   font-style: italic;
   padding: 1rem;
   background-color: var(--bg-secondary);
   border-left: 4px solid var(--primary-color);
   border-radius: 4px;
+  word-break: break-word;
+  letter-spacing: 0.02em;
 }
 
 .about-stats {
@@ -879,8 +907,10 @@ section {
 .project-description {
   color: var(--text-secondary);
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.8;
   font-size: 1rem;
+  word-break: break-word;
+  letter-spacing: 0.02em;
 }
 
 .project-description-ja {
@@ -913,10 +943,12 @@ section {
 .feature-item {
   color: var(--text-secondary);
   font-size: 0.85rem;
-  line-height: 1.4;
-  margin-bottom: 0.25rem;
+  line-height: 1.6;
+  margin-bottom: 0.3rem;
   padding-left: 1rem;
   position: relative;
+  word-break: break-word;
+  letter-spacing: 0.01em;
 }
 
 .feature-item::before {
@@ -1018,15 +1050,19 @@ section {
 .contact-description {
   color: var(--text-secondary);
   margin-bottom: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  word-break: break-word;
+  letter-spacing: 0.01em;
 }
 
 .contact-description-ja {
   color: var(--text-light);
   margin-bottom: 2rem;
-  line-height: 1.6;
+  line-height: 1.8;
   font-style: italic;
   font-size: 0.95rem;
+  word-break: break-word;
+  letter-spacing: 0.02em;
 }
 
 .contact-details {
@@ -1130,8 +1166,10 @@ section {
 .resume-description {
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 0.95rem;
+  word-break: break-word;
+  letter-spacing: 0.01em;
 }
 
 .resume-download-btn {

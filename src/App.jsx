@@ -194,7 +194,7 @@ function App() {
       title: "2-Tier Web Application with AWS",
       description: {
         en: "A highly available and secure web application infrastructure deployed on AWS. Features EC2 instances with Auto Scaling for dynamic capacity management, ACM for SSL/TLS certificates, and Route 53 for DNS routing. Comprehensive IAM policies ensure security governance across all services.",
-        ja: "AWSに展開された高可用性でセキュアなWebアプリケーションインフラストラクチャです。動的な容量管理のためのAuto Scaling付きEC2インスタンス、SSL/TLS証明書のためのACM、DNSルーティングのためのRoute 53を特徴としています。包括的なIAMポリシーが全サービスのセキュリティガバナンスを確保します。"
+        ja: "AWSに展開された高可用性でセキュアなWebアプリケーションインフラストラクチャ。EC2インスタンスのAuto Scaling機能による動的な容量管理、ACMによるSSL/TLS証明書管理、Route 53によるDNSルーティングを実装。包括的なIAMポリシーにより全サービスのセキュリティガバナンスを確保。"
       },
       technologies: ["AWS", "EC2", "ACM", "Route53", "Auto-Scaling", "IAM"],
       keyFeatures: {
@@ -245,7 +245,7 @@ function App() {
   ]
 
   return (
-    <div className="App">
+    <div className="App" data-lang={language}>
       {/* Navigation */}
       <nav className="navbar">
         <div className="container">
@@ -351,7 +351,7 @@ function App() {
                   <div className="education-details">
                     <h4 className="education-degree">BSc (Hons) in Computer Engineering</h4>
                     <p className="education-school">The Open University - Milton Keynes, England</p>
-                    <p className="education-year">2023 - 2026</p>
+                    <p className="education-year">2024 - 2026</p>
                     <p className="education-description">
                       {language === 'en' ? (
                         <>
