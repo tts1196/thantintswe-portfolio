@@ -11,6 +11,7 @@ import githubLogo from './assets/github-logo.svg'
 function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [language, setLanguage] = useState('en') // 'en' or 'ja'
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -23,7 +24,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'contact']
+      const sections = ['home', 'about', 'projects', 'resume', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -44,17 +45,131 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleResumeDownload = (filename) => {
+    // Map of available files
+    const fileMap = {
+      'resume.pdf': 'resume.pdf', // English resume - not yet available
+      'rirekisho.pdf': '履歴書.pdf', // Japanese format
+      'shokureki.pdf': '職務経歴書.pdf' // Career history
+    }
+    
+    const actualFilename = fileMap[filename]
+    
+    // Check if it's the English resume (not yet available)
+    if (filename === 'resume.pdf') {
+      const message = language === 'en' 
+        ? 'English resume is currently being prepared. Please contact me directly at swethantint@gmail.com for the latest version, or download the Japanese format versions below.'
+        : '英語版レジュメは現在準備中です。最新版については swethantint@gmail.com まで直接お問い合わせいただくか、下記の日本語版をダウンロードしてください。'
+      alert(message)
+      return
+    }
+    
+    try {
+      // Create the file path using the public folder for production builds
+      const fileUrl = `/src/assets/CV/${actualFilename}`
+      
+      // Create a temporary link element
+      const link = document.createElement('a')
+      link.href = fileUrl
+      link.download = actualFilename
+      link.target = '_blank'
+      
+      // Append to body, click, and remove
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (error) {
+      console.error('Error downloading file:', error)
+      // Fallback: Alert user that file is not available
+      const message = language === 'en' 
+        ? 'Resume file is currently being updated. Please contact me directly for the latest version.'
+        : '履歴書ファイルは現在更新中です。最新版については直接お問い合わせください。'
+      alert(message)
+    }
+  }
+
   const personalInfo = {
     name: "Than Tint Swe",
-    title: "Aspiring Cloud, DevOps & Infrastructure Engineer",
-    titleJa: "クラウド・DevOps・インフラエンジニア志望",
-    subtitle: "Always building, learning, and automating systems in the cloud and beyond.",
-    subtitleJa: "よろしくお願いいたします。一緒に働ける機会を楽しみにしています。",
+    title: {
+      en: "Aspiring Cloud, DevOps & Infrastructure Engineer",
+      ja: "クラウド・DevOps・インフラエンジニア志望"
+    },
+    subtitle: {
+      en: "Always building, learning, and automating systems in the cloud and beyond.",
+      ja: "よろしくお願いいたします。一緒に働ける機会を楽しみにしています。"
+    },
     email: "swethantint@gmail.com",
     phone: "+81 70-9193-0365",
     location: "Nagoya, Japan",
     linkedin: "linkedin.com/in/than-tint-swe",
     github: "github.com/tts1196"
+  }
+
+  const content = {
+    nav: {
+      home: { en: "Home", ja: "ホーム" },
+      about: { en: "About Me", ja: "自己紹介" },
+      projects: { en: "Projects", ja: "プロジェクト" },
+      resume: { en: "Resume", ja: "履歴書" },
+      contact: { en: "Contact", ja: "お問い合わせ" }
+    },
+    buttons: {
+      viewWork: { en: "View My Work", ja: "作品を見る" },
+      getInTouch: { en: "Get In Touch", ja: "お問い合わせ" }
+    },
+    about: {
+      title: { en: "About Me", ja: "自己紹介" },
+      description1: {
+        en: "Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, with a passion for building, automating, and securing systems across both cloud and traditional infrastructure environments. I'm currently pursuing a BSc (Hons) in Computing from The Open University UK (graduating in September 2026) while working at Meisei Co.,Ltd.",
+        ja: "初めまして、Than Tint Sweと申します。名古屋在住のITエンジニア志望で、クラウドと従来のインフラ環境の両方でシステムの構築、自動化、セキュリティに情熱を注いでいます。現在、株式会社明星で働きながら、英国オープン大学でコンピュータ学の学士号を取得中です（2026年9月卒業予定）。"
+      },
+      description2: {
+        en: "My technical interests include cloud infrastructure, DevOps, networking, and system administration. I enjoy working with tools like AWS, Terraform, Linux, Git, and Docker, and I regularly build hands-on projects to apply real-world architecture and automation practices. I'm also planning to take the JLPT N2 exam in December 2025 as part of my ongoing language learning.",
+        ja: "技術的な興味分野は、クラウドインフラ、DevOps、ネットワーキング、システム管理です。AWS、Terraform、Linux、Git、Dockerなどのツールを使用して、実世界のアーキテクチャと自動化の実践を適用するハンズオンプロジェクトを定期的に構築しています。また、継続的な語学学習の一環として、2025年12月にJLPT N2試験を受験予定です。"
+      },
+      description3: {
+        en: "I'm currently seeking entry-level roles in Cloud, DevOps, Infrastructure, or IT engineering, with the goal of transitioning into a full-time technical role by September 2025. I'm motivated, detail-oriented, and always eager to learn and grow within a collaborative engineering team.",
+        ja: "現在、クラウド、DevOps、インフラ、またはITエンジニアリングの入門レベルの職を探しており、2025年9月までにフルタイムの技術職への転職を目標としています。意欲的で細部にこだわり、協力的なエンジニアリングチーム内で常に学び、成長することを eager しています。"
+      },
+      description4: {
+        en: "Thanks for stopping by my portfolio — feel free to connect if you're working on something exciting or looking for a motivated junior engineer!",
+        ja: "ポートフォリオをご覧いただき、ありがとうございます。エントリーレベルのポジションで成長し、貢献できる機会を探しています。ご連絡をお待ちしております！"
+      }
+    },
+    education: {
+      title: { en: "Education", ja: "学歴" }
+    },
+    certifications: {
+      title: { en: "Certifications", ja: "資格" }
+    },
+    skills: {
+      technical: { en: "Technical Skills", ja: "技術スキル" },
+      tools: { en: "Tools & Technologies", ja: "ツール・テクノロジー" }
+    },
+    projects: {
+      title: { en: "Featured Projects", ja: "主要なプロジェクト" },
+      keyFeatures: { en: "Key Features:", ja: "主な機能:" }
+    },
+    contact: {
+      title: { en: "Get In Touch", ja: "お問い合わせ" },
+      subtitle: { en: "Let's work together", ja: "一緒に働きましょう" },
+      description: {
+        en: "I'm always interested in new opportunities and challenging projects. Feel free to reach out if you'd like to discuss potential collaborations.",
+        ja: "新しい機会や挑戦的なプロジェクトにいつも興味を持っています。ご協力の可能性についてお話しいただければと思います。"
+      }
+    },
+    resume: {
+      title: { en: "Download Resume", ja: "履歴書ダウンロード" },
+      description: {
+        en: "Download my resume and CV in various formats:",
+        ja: "各種形式で履歴書をダウンロードできます："
+      },
+      files: {
+        resume: { en: "Resume (English)", ja: "レジュメ（英語版）" },
+        rirekisho: { en: "履歴書", ja: "履歴書" },
+        shokureki: { en: "職務経歴書", ja: "職務経歴書" }
+      }
+    }
   }
 
   const skills = {
@@ -71,35 +186,56 @@ function App() {
   const projects = [
     {
       title: "2-Tier Web Application with AWS",
-      description: "Scalable web application deployed on AWS using a 2-tier architecture with EC2, RDS, and Load Balancer for high availability.",
-      descriptionJa: "EC2、RDS、ロードバランサーを使用した2層アーキテクチャでAWSにデプロイされた高可用性のスケーラブルなWebアプリケーションです。",
-      technologies: ["AWS", "EC2", "RDS", "ALB", "VPC"],
-      keyFeatures: [
-        "Auto Scaling Group Configuration",
-        "Application Load Balancer Setup",
-        "RDS Database Integration",
-        "VPC with Public/Private Subnets",
-        "Security Groups and NACLs"
-      ],
+      description: {
+        en: "A highly available and secure web application infrastructure deployed on AWS. Features EC2 instances with Auto Scaling for dynamic capacity management, ACM for SSL/TLS certificates, and Route 53 for DNS routing. Comprehensive IAM policies ensure security governance across all services.",
+        ja: "AWSに展開された高可用性でセキュアなWebアプリケーションインフラストラクチャです。動的な容量管理のためのAuto Scaling付きEC2インスタンス、SSL/TLS証明書のためのACM、DNSルーティングのためのRoute 53を特徴としています。包括的なIAMポリシーが全サービスのセキュリティガバナンスを確保します。"
+      },
+      technologies: ["AWS", "EC2", "ACM", "Route53", "Auto-Scaling", "IAM"],
+      keyFeatures: {
+        en: [
+          "Auto Scaling Group Configuration",
+          "SSL Certificate Management with ACM",
+          "DNS Management with Route53",
+          "IAM Security Policies",
+          "High Availability Infrastructure"
+        ],
+        ja: [
+          "Auto Scalingグループの設定",
+          "ACMによるSSL証明書管理",
+          "Route53によるDNS管理",
+          "IAMセキュリティポリシー",
+          "高可用性インフラストラクチャ"
+        ]
+      },
       github: "https://github.com/tts1196/2-tier-web-app",
       image: project2Image
     },
     {
       title: "Secure EC2 Instance with SSM by Terraforming",
-      description: "Infrastructure as Code solution for deploying secure EC2 instances with Systems Manager access using Terraform.",
-      descriptionJa: "Terraformを使用してSystems Managerアクセスを持つセキュアなEC2インスタンスをデプロイするInfrastructure as Codeソリューションです。",
+      description: {
+        en: "Infrastructure as Code solution for deploying secure EC2 instances with Systems Manager access using Terraform.",
+        ja: "Terraformを使用してSystems Managerアクセスを持つセキュアなEC2インスタンスをデプロイするInfrastructure as Codeソリューションです。"
+      },
       technologies: ["AWS", "Terraform Cloud", "IAM", "Role"],
-      keyFeatures: [
-        "EC2 Provisioning via Terraform Cloud",
-        "IAM Role-Based Access Control",
-        "Secure Access with SSM",
-        "Custom Security Group",
-        "Modular and Scalable"
-      ],
+      keyFeatures: {
+        en: [
+          "EC2 Provisioning via Terraform Cloud",
+          "IAM Role-Based Access Control",
+          "Secure Access with SSM",
+          "Custom Security Group",
+          "Modular and Scalable"
+        ],
+        ja: [
+          "Terraform Cloudを使用したEC2プロビジョニング",
+          "IAMロールベースのアクセス制御",
+          "SSMを使用したセキュアアクセス",
+          "カスタムセキュリティグループ",
+          "モジュラーでスケーラブル"
+        ]
+      },
       github: "https://github.com/tts1196/Secure-EC2-Instance--SSM-with-Terraform",
       image: project1Image
     }    
-    // Add more projects as needed
   ]
 
   return (
@@ -111,10 +247,11 @@ function App() {
             <div className="nav-links-wrapper">
               <ul className={`nav-links ${isMenuOpen ? 'nav-links-open' : ''}`}>
                 {[
-                  { id: 'home', label: 'Home' },
-                  { id: 'about', label: 'About Me' },
-                  { id: 'projects', label: 'Projects' },
-                  { id: 'contact', label: 'Contact' }
+                  { id: 'home', label: content.nav.home[language] },
+                  { id: 'about', label: content.nav.about[language] },
+                  { id: 'projects', label: content.nav.projects[language] },
+                  { id: 'resume', label: content.nav.resume[language] },
+                  { id: 'contact', label: content.nav.contact[language] }
                 ].map((item) => (
                   <li key={item.id} className="nav-item">
                     <button
@@ -129,15 +266,25 @@ function App() {
               </ul>
             </div>
 
-            <button 
-              className="mobile-menu-btn"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle navigation menu"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
+            <div className="nav-controls">
+              <button 
+                className="language-toggle"
+                onClick={() => setLanguage(language === 'en' ? 'ja' : 'en')}
+                aria-label="Toggle language"
+              >
+                {language === 'en' ? '日本語' : 'English'}
+              </button>
+
+              <button 
+                className="mobile-menu-btn"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle navigation menu"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -150,16 +297,14 @@ function App() {
               <h1 className="hero-title">
                 Hi, I'm <span className="gradient-text">{personalInfo.name}</span>
               </h1>
-              <h2 className="hero-subtitle">{personalInfo.title}</h2>
-              <h3 className="hero-subtitle-ja">{personalInfo.titleJa}</h3>
-              <p className="hero-description">{personalInfo.subtitle}</p>
-              <p className="hero-description-ja">{personalInfo.subtitleJa}</p>
+              <h2 className="hero-subtitle">{personalInfo.title[language]}</h2>
+              <p className="hero-description">{personalInfo.subtitle[language]}</p>
               <div className="hero-buttons">
                 <button onClick={() => scrollToSection('projects')} className="btn btn-primary">
-                  View My Work
+                  {content.buttons.viewWork[language]}
                 </button>
                 <button onClick={() => scrollToSection('contact')} className="btn btn-secondary">
-                  Get In Touch
+                  {content.buttons.getInTouch[language]}
                 </button>
               </div>
             </div>
@@ -170,33 +315,23 @@ function App() {
       {/* About, Education & Certifications Combined Section */}
       <section id="about" className="section">
         <div className="container">
-          <h2 className="section-title">About Me</h2>
+          <h2 className="section-title">{content.about.title[language]}</h2>
           <div className="about-education-layout">
             {/* Left Side - About Content (70%) */}
             <div className="about-content">
               <div className="about-text">
                 <p className="about-description">
-                  Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, with a passion for building, automating, and securing systems across both cloud and traditional infrastructure environments. 
-                  I'm currently pursuing a BSc (Hons) in Computing from The Open University UK (graduating in September 2026) while working at Meisei Co.,Ltd.
+                  {content.about.description1[language]}
                 </p>
                 <p className="about-description">
-                  My technical interests include cloud infrastructure, DevOps, networking, and system administration. 
-                  I enjoy working with tools like AWS, Terraform, Linux, Git, and Docker, 
-                  and I regularly build hands-on projects to apply real-world architecture and automation practices. 
-                  I'm also planning to take the JLPT N2 exam in December 2025 as part of my ongoing language learning.
+                  {content.about.description2[language]}
                 </p>
                 <p className="about-description">
-                  I'm currently seeking entry-level roles in Cloud, DevOps, Infrastructure, or IT engineering, 
-                  with the goal of transitioning into a full-time technical role by September 2025. I'm motivated, detail-oriented, and always eager to learn and grow within a collaborative engineering team.
+                  {content.about.description3[language]}
                 </p>
                 <p className="about-description">
-                  Thanks for stopping by my portfolio — 
-                  feel free to connect if you're working on something exciting or looking for a motivated junior engineer!
+                  {content.about.description4[language]}
                 </p>
-                <p className="about-description-ja">
-                  ポートフォリオをご覧いただき、ありがとうございます。エントリーレベルのポジションで成長し、貢献できる機会を探しています。ご連絡をお待ちしております！
-                </p>
-                
               </div>
             </div>
 
@@ -204,7 +339,7 @@ function App() {
             <div className="right-sidebar">
               {/* Education Subsection */}
               <div id="education" className="education-section">
-                <h3 className="subsection-title">Education</h3>
+                <h3 className="subsection-title">{content.education.title[language]}</h3>
                 <div className="education-item-compact">
                   <div className="education-icon">🎓</div>
                   <div className="education-details">
@@ -237,7 +372,7 @@ function App() {
 
               {/* Certifications Subsection */}
               <div id="certifications" className="certifications-section">
-                <h3 className="subsection-title">Certifications</h3>
+                <h3 className="subsection-title">{content.certifications.title[language]}</h3>
                 <div className="certifications-compact">
                   <div className="certification-item">
                     <div className="cert-icon">
@@ -291,7 +426,7 @@ function App() {
           {/* Skills Section - Full Width Below */}
           <div className="skills-content">
             <div className="skills-category">
-              <h3 className="skills-category-title">Technical Skills</h3>
+              <h3 className="skills-category-title">{content.skills.technical[language]}</h3>
               <div className="skills-grid">
                 {skills.technical.map((skill, index) => (
                   <div key={index} className="skill-tag">{skill}</div>
@@ -299,7 +434,7 @@ function App() {
               </div>
             </div>
             <div className="skills-category">
-              <h3 className="skills-category-title">Tools & Technologies</h3>
+              <h3 className="skills-category-title">{content.skills.tools[language]}</h3>
               <div className="skills-grid">
                 {skills.tools.map((tool, index) => (
                   <div key={index} className="skill-tag">{tool}</div>
@@ -313,8 +448,7 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className="section">
         <div className="container">
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="section-subtitle-ja">主要なプロジェクト</p>
+          <h2 className="section-title">{content.projects.title[language]}</h2>
           <div className="projects-list">
             {projects.map((project, index) => (
               <div key={index} className="project-card-fullwidth">
@@ -342,13 +476,12 @@ function App() {
                   
                   {/* Project Content - Right Side (30%) */}
                   <div className="project-content-left">
-                    <p className="project-description">{project.description}</p>
-                    <p className="project-description-ja">{project.descriptionJa}</p>
+                    <p className="project-description">{project.description[language]}</p>
                     {project.keyFeatures && (
                       <div className="project-features">
-                        <h4 className="features-title">Key Features:</h4>
+                        <h4 className="features-title">{content.projects.keyFeatures[language]}</h4>
                         <ul className="features-list">
-                          {project.keyFeatures.map((feature, featureIndex) => (
+                          {project.keyFeatures[language].map((feature, featureIndex) => (
                             <li key={featureIndex} className="feature-item">{feature}</li>
                           ))}
                         </ul>
@@ -373,16 +506,75 @@ function App() {
         </div>
       </section>
 
+      {/* Resume Download Section */}
+      <section id="resume" className="section">
+        <div className="container">
+          <h2 className="section-title">{content.resume.title[language]}</h2>
+          <p className="section-description">{content.resume.description[language]}</p>
+          <div className="resume-grid">
+            <div className="resume-card">
+              <div className="resume-icon">📄</div>
+              <h3 className="resume-title">{content.resume.files.resume[language]}</h3>
+              <p className="resume-description">
+                {language === 'en' 
+                  ? 'Professional resume in English format, perfect for international opportunities. Currently being prepared.'
+                  : '国際的な機会に最適な英語形式のプロフェッショナルレジュメです。現在準備中です。'
+                }
+              </p>
+              <button 
+                className="btn btn-secondary resume-download-btn"
+                onClick={() => handleResumeDownload('resume.pdf')}
+              >
+                {language === 'en' ? 'Coming Soon' : '準備中'}
+              </button>
+            </div>
+            
+            <div className="resume-card">
+              <div className="resume-icon">📋</div>
+              <h3 className="resume-title">{content.resume.files.rirekisho[language]}</h3>
+              <p className="resume-description">
+                {language === 'en' 
+                  ? 'Traditional Japanese resume format (履歴書) for Japanese companies.'
+                  : '日本企業向けの従来の日本語履歴書形式です。'
+                }
+              </p>
+              <button 
+                className="btn btn-primary resume-download-btn"
+                onClick={() => handleResumeDownload('rirekisho.pdf')}
+              >
+                {language === 'en' ? 'Download PDF' : 'PDFダウンロード'}
+              </button>
+            </div>
+            
+            <div className="resume-card">
+              <div className="resume-icon">📊</div>
+              <h3 className="resume-title">{content.resume.files.shokureki[language]}</h3>
+              <p className="resume-description">
+                {language === 'en' 
+                  ? 'Detailed career history document (職務経歴書) highlighting professional experience.'
+                  : 'プロフェッショナルな経験を強調した詳細な職務経歴書です。'
+                }
+              </p>
+              <button 
+                className="btn btn-primary resume-download-btn"
+                onClick={() => handleResumeDownload('shokureki.pdf')}
+              >
+                {language === 'en' ? 'Download PDF' : 'PDFダウンロード'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="section bg-secondary">
         <div className="container">
-          <h2 className="section-title">Get In Touch</h2>
+          <h2 className="section-title">{content.contact.title[language]}</h2>
           <div className="contact-content">
             <div className="contact-info">
-              <h3 className="contact-subtitle">Let's work together</h3>
+              <h3 className="contact-subtitle">{content.contact.subtitle[language]}</h3>
               <p className="contact-description">
-                I'm always interested in new opportunities and challenging projects. 
-                Feel free to reach out if you'd like to discuss potential collaborations.
+                {content.contact.description[language]}
               </p>
               <div className="contact-details">
                 <div className="contact-item">

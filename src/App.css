@@ -57,10 +57,35 @@ body {
 
 .nav-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
   height: 70px;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.language-toggle {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.language-toggle:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .nav-links-wrapper {
@@ -181,6 +206,15 @@ body {
 
   .mobile-menu-btn span {
     background-color: var(--text-primary);
+  }
+
+  .nav-controls {
+    gap: 0.5rem;
+  }
+
+  .language-toggle {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -1054,6 +1088,122 @@ section {
 
 .social-links a:hover {
   color: white;
+}
+
+/* Resume Download Section */
+.resume-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.resume-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.resume-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.resume-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.resume-description {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.resume-download-btn {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.resume-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-download-btn.btn-secondary {
+  background-color: var(--text-secondary);
+  border-color: var(--text-secondary);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.resume-download-btn.btn-secondary:hover {
+  background-color: var(--text-secondary);
+  border-color: var(--text-secondary);
+  transform: none;
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+.resume-card:has(.btn-secondary) {
+  opacity: 0.85;
+}
+
+.resume-card:has(.btn-secondary):hover {
+  transform: translateY(-2px);
+  border-color: var(--text-secondary);
+}
+
+.section-description {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Resume Section Responsive */
+@media (max-width: 768px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .resume-card {
+    padding: 1.5rem;
+  }
+  
+  .resume-icon {
+    font-size: 2.5rem;
+  }
+  
+  .resume-title {
+    font-size: 1.125rem;
+  }
+  
+  .resume-description {
+    font-size: 0.9rem;
+  }
 }
 
 /* Responsive Design */
