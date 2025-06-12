@@ -347,24 +347,25 @@ function App() {
                     <p className="education-school">The Open University - Milton Keynes, England</p>
                     <p className="education-year">2023 - 2026</p>
                     <p className="education-description">
-                      <li>
-                         The Computing and IT Project
-                      </li>
-                      <li>
-                        Information Security
-                      </li>
-                      <li>
-                        Networking and Systems Development
-                      </li>
-                      <li>
-                        Web, Mobile, and Cloud Technologies
-                      </li>
-                      <li>
-                        Data Management and Analysis
-                      </li>
-                      <li>
-                        Software Engineering
-                      </li>
+                      {language === 'en' ? (
+                        <>
+                          <li>The Computing and IT Project</li>
+                          <li>Information Security</li>
+                          <li>Networking and Systems Development</li>
+                          <li>Web, Mobile, and Cloud Technologies</li>
+                          <li>Data Management and Analysis</li>
+                          <li>Software Engineering</li>
+                        </>
+                      ) : (
+                        <>
+                          <li>コンピューティングとITプロジェクト</li>
+                          <li>情報セキュリティ</li>
+                          <li>ネットワーキングとシステム開発</li>
+                          <li>Web、モバイル、クラウド技術</li>
+                          <li>データ管理と分析</li>
+                          <li>ソフトウェアエンジニアリング</li>
+                        </>
+                      )}
                     </p>
                   </div>
                 </div>
