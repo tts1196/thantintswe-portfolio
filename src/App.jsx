@@ -66,7 +66,7 @@ function App() {
     
     try {
       // Create the file path using the public folder for production builds
-      const fileUrl = `/src/assets/CV/${actualFilename}`
+      const fileUrl = `/CV/${actualFilename}`
       
       // Create a temporary link element
       const link = document.createElement('a')
