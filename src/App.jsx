@@ -4,6 +4,7 @@ import awsLogo from './assets/certifications/aws-logo.png'
 import ciscoLogo from './assets/certifications/cisco-logo.png'
 import project1Image from './assets/projects/project-1.png'
 import project2Image from './assets/projects/project-2.png'
+import eksImage from './assets/projects/eks.jpg'
 import githubLogo from './assets/github-logo.svg'
 
 function App() {
@@ -180,6 +181,32 @@ function App() {
 
   const projects = [
     {
+      title: "cloud-boutique-platform",
+      description: {
+        en: "A comprehensive cloud-native microservices application deployed on Amazon EKS using Infrastructure as Code. Features 11 microservices built with different technologies (Go, Python, Java, C#, Node.js) demonstrating modern containerized architecture patterns, service mesh communication, and auto-scaling capabilities.",
+        ja: "Infrastructure as Codeを使用してAmazon EKSに展開された包括的なクラウドネイティブマイクロサービスアプリケーション。異なる技術（Go、Python、Java、C#、Node.js）で構築された11のマイクロサービスを特徴とし、現代的なコンテナ化アーキテクチャパターン、サービスメッシュ通信、オートスケーリング機能を実証。"
+      },
+      technologies: ["AWS EKS", "Kubernetes", "Terraform", "Docker", "Microservices"],
+      keyFeatures: {
+        en: [
+          "11 Microservices Architecture",
+          "Multi-language Service Implementation",
+          "VPC with Private/Public Subnets",
+          "Application Load Balancer Integration",
+          "SSM-based Secure Access"
+        ],
+        ja: [
+          "11のマイクロサービスアーキテクチャ",
+          "多言語サービス実装",
+          "プライベート/パブリックサブネット構成のVPC",
+          "Application Load Balancer統合",
+          "SSMベースのセキュアアクセス"
+        ]
+      },
+      github: "https://github.com/tts1196/online-boutique-eks",
+      image: eksImage
+    },
+    {
       title: "2-Tier Web Application with AWS",
       description: {
         en: "A highly available and secure web application infrastructure deployed on AWS. Features EC2 instances with Auto Scaling for dynamic capacity management, ACM for SSL/TLS certificates, and Route 53 for DNS routing. Comprehensive IAM policies ensure security governance across all services.",
@@ -230,7 +257,7 @@ function App() {
       },
       github: "https://github.com/tts1196/Secure-EC2-Instance--SSM-with-Terraform",
       image: project1Image
-    }    
+    }
   ]
 
   return (
