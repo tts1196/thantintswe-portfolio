@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import awsLogo from './assets/certifications/aws-logo.png'
 import ciscoLogo from './assets/certifications/cisco-logo.png'
-import kubernetesLogo from './assets/certifications/kubernetes-logo.png'
-import terraformLogo from './assets/certifications/terraform-logo.png'
 import project1Image from './assets/projects/project-1.png'
 import project2Image from './assets/projects/project-2.png'
 import githubLogo from './assets/github-logo.svg'
@@ -48,21 +46,12 @@ function App() {
   const handleResumeDownload = (filename) => {
     // Map of available files
     const fileMap = {
-      'resume.pdf': 'resume.pdf', // English resume - not yet available
+      'resume.pdf': 'Resume.pdf', // English resume - now available
       'rirekisho.pdf': '履歴書.pdf', // Japanese format
       'shokureki.pdf': '職務経歴書.pdf' // Career history
     }
     
     const actualFilename = fileMap[filename]
-    
-    // Check if it's the English resume (not yet available)
-    if (filename === 'resume.pdf') {
-      const message = language === 'en' 
-        ? 'English resume is currently being prepared. Please contact me directly at swethantint@gmail.com for the latest version, or download the Japanese format versions below.'
-        : '英語版レジュメは現在準備中です。最新版については swethantint@gmail.com まで直接お問い合わせいただくか、下記の日本語版をダウンロードしてください。'
-      alert(message)
-      return
-    }
     
     try {
       // Create the file path using the public folder for production builds
@@ -120,20 +109,20 @@ function App() {
     about: {
       title: { en: "About Me", ja: "自己紹介" },
       description1: {
-        en: "Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, with a passion for building, automating, and securing systems across both cloud and traditional infrastructure environments. I'm currently pursuing a BSc (Hons) in Computing from The Open University UK (graduating in September 2026) while working at Meisei Co.,Ltd.",
-        ja: "初めまして、Than Tint Sweと申します。名古屋在住のITエンジニア志望で、クラウドと従来のインフラ環境の両方でシステムの構築、自動化、セキュリティに情熱を注いでいます。現在、株式会社明星で働きながら、英国オープン大学でコンピュータ学の学士号を取得中です（2026年9月卒業予定）。"
+        en: "Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, passionate about building and automating secure cloud infrastructure. I'm pursuing a BSc (Hons) in Computing from The Open University (UK) while working at Meisei Co., Ltd.",
+        ja: "初めまして、Than Tint Swe（タン ティン スウェ）と申します。名古屋在住のITエンジニア志望で、セキュアなクラウドインフラの構築と自動化に情熱を注いでいます。現在、株式会社明星で働きながら、英国オープン大学でコンピュータ学の学士号（BSc Hons）を取得中です。"
       },
       description2: {
-        en: "My technical interests include cloud infrastructure, DevOps, networking, and system administration. I enjoy working with tools like AWS, Terraform, Linux, Git, and Docker, and I regularly build hands-on projects to apply real-world architecture and automation practices. I'm also planning to take the JLPT N2 exam in December 2025 as part of my ongoing language learning.",
-        ja: "技術的な興味分野は、クラウドインフラ、DevOps、ネットワーキング、システム管理です。AWS、Terraform、Linux、Git、Dockerなどのツールを使用して、実世界のアーキテクチャと自動化の実践を適用するハンズオンプロジェクトを定期的に構築しています。また、継続的な語学学習の一環として、2025年12月にJLPT N2試験を受験予定です。"
+        en: "My expertise spans cloud infrastructure, DevOps, networking, and system administration, with hands-on experience in AWS, Terraform, Linux, Docker, and Git. I build real-world projects, like a high-availability AWS architecture using Terraform, ALB, and auto-scaling EC2 instances, to sharpen my skills.",
+        ja: "クラウドインフラ、DevOps、ネットワーク、システム管理を専門とし、AWS、Terraform、Linux、Docker、Gitを活用した実務経験があります。たとえば、Terraform、ALB、Auto Scaling EC2を用いた高可用性AWSアーキテクチャを構築し、スキルを磨いています。"
       },
       description3: {
-        en: "I'm currently seeking entry-level roles in Cloud, DevOps, Infrastructure, or IT engineering, with the goal of transitioning into a full-time technical role by September 2025. I'm motivated, detail-oriented, and always eager to learn and grow within a collaborative engineering team.",
-        ja: "現在、クラウド、DevOps、インフラ、またはITエンジニアリングの入門レベルの職を探しており、2025年9月までにフルタイムの技術職への転職を目標としています。意欲的で細部にこだわり、協力的なエンジニアリングチーム内で常に学び、成長することを eager しています。"
+        en: "I'm preparing for the JLPT N2 to thrive in Japan's dynamic tech industry. I'm seeking entry-level Cloud, DevOps, or Infrastructure Engineering roles where I can contribute technical expertise and a collaborative, growth-oriented mindset.",
+        ja: "日本のテック業界で活躍するため、JLPT N2取得を目指して勉強中です。クラウド、DevOps、インフラエンジニアリングのエントリーポジションで、技術力とチームワークを活かして貢献したいと考えています。"
       },
       description4: {
-        en: "Thanks for stopping by my portfolio — feel free to connect if you're working on something exciting or looking for a motivated junior engineer!",
-        ja: "ポートフォリオをご覧いただき、ありがとうございます。エントリーレベルのポジションで成長し、貢献できる機会を探しています。ご連絡をお待ちしております！"
+        en: "If you're hiring or working on exciting projects, let's connect!",
+        ja: "面白いプロジェクトに取り組む方や採用担当の方、ぜひご連絡ください！"
       }
     },
     education: {
@@ -176,7 +165,7 @@ function App() {
   const skills = {
     technical: [
       "AWS", "Azure", "Google Cloud", "Python", "Docker","Security", "TCP/IP",
-      "Linux", "Microsoft Windows", "Routing", "Swtiching"
+      "Linux", "Microsoft Windows", "Routing", "Switching"
     ],
     tools: [
       "Git/GitHub", "Kubernetes", "Terraform", "Monitoring Tools",
@@ -407,24 +396,6 @@ function App() {
                       <p className="cert-details">August • 2023</p>
                     </div>
                   </div>
-                  {/* <div className="certification-item">
-                    <div className="cert-icon">
-                      <img src={kubernetesLogo} alt="Kubernetes" className="cert-logo" />
-                    </div>
-                    <div className="cert-info">
-                      <h4 className="cert-title">Certified Kubernetes Administrator</h4>
-                      <p className="cert-details">June • 2025</p>
-                    </div>
-                  </div>
-                  <div className="certification-item">
-                    <div className="cert-icon">
-                      <img src={terraformLogo} alt="Terraform" className="cert-logo" />
-                    </div>
-                    <div className="cert-info">
-                      <h4 className="cert-title">Terraform Associate</h4>
-                      <p className="cert-details">June • 2025</p>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -530,29 +501,17 @@ function App() {
             <div className="resume-card">
               <div className="resume-icon">📄</div>
               <h3 className="resume-title">{content.resume.files.resume[language]}</h3>
-              <p className="resume-description">
-                {language === 'en' 
-                  ? 'Currently being prepared.'
-                  : '現在準備中です。'
-                }
-              </p>
               <button 
-                className="btn btn-secondary resume-download-btn"
+                className="btn btn-primary resume-download-btn"
                 onClick={() => handleResumeDownload('resume.pdf')}
               >
-                {language === 'en' ? 'Coming Soon' : '準備中'}
+                {language === 'en' ? 'Download PDF' : 'PDFダウンロード'}
               </button>
             </div>
             
             <div className="resume-card">
               <div className="resume-icon">📋</div>
               <h3 className="resume-title">{content.resume.files.rirekisho[language]}</h3>
-              <p className="resume-description">
-                {language === 'en' 
-                  ? ''
-                  : ''
-                }
-              </p>
               <button 
                 className="btn btn-primary resume-download-btn"
                 onClick={() => handleResumeDownload('rirekisho.pdf')}
@@ -564,12 +523,6 @@ function App() {
             <div className="resume-card">
               <div className="resume-icon">📊</div>
               <h3 className="resume-title">{content.resume.files.shokureki[language]}</h3>
-              <p className="resume-description">
-                {language === 'en' 
-                  ? ''
-                  : ''
-                }
-              </p>
               <button 
                 className="btn btn-primary resume-download-btn"
                 onClick={() => handleResumeDownload('shokureki.pdf')}
