@@ -89,7 +89,6 @@ function App() {
       ja: "よろしくお願いいたします。一緒に働ける機会を楽しみにしています。"
     },
     email: "swethantint@gmail.com",
-    phone: "+81 70-9193-0365",
     location: "Nagoya, Japan",
     linkedin: "linkedin.com/in/than-tint-swe",
     github: "github.com/tts1196"
@@ -583,10 +582,6 @@ function App() {
                 <div className="contact-item">
                   <span className="contact-icon">📩</span>
                   <span className="contact-text">{personalInfo.email}</span>
-                </div>
-                <div className="contact-item">
-                  <span className="contact-icon">📞</span>
-                  <span className="contact-text">{personalInfo.phone}</span>
                 </div>
                 <div className="contact-item">
                   <span className="contact-icon">🏠︎</span>
