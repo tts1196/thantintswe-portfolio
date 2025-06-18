@@ -111,7 +111,7 @@ function App() {
       title: { en: "About Me", ja: "自己紹介" },
       description1: {
         en: "Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, passionate about building and automating secure cloud infrastructure. I'm pursuing a BSc (Hons) in Computing from The Open University (UK) while working at Meisei Co., Ltd.",
-        ja: "初めまして、Than Tint Swe（タン ティン スウェ）と申します。名古屋在住のITエンジニア志望で、セキュアなクラウドインフラの構築と自動化に情熱を注いでいます。現在、株式会社明星で働きながら、英国オープン大学でコンピュータ学の学士号（BSc Hons）を取得中です。"
+        ja: "初めまして、Than Tint Swe（タン ティン スウェ）と申します。名古屋在住のITエンジニア志望で、セキュアなクラウドインフラの構築と自動化に情熱を注いでいます。現在、明誠株式会社で働きながら、英国オープン大学でコンピュータ学の学士号（BSc Hons）を取得中です。"
       },
       description2: {
         en: "My expertise spans cloud infrastructure, DevOps, networking, and system administration, with hands-on experience in AWS, Terraform, Linux, Docker, and Git. I build real-world projects, like a high-availability AWS architecture using Terraform, ALB, and auto-scaling EC2 instances, to sharpen my skills.",
@@ -130,7 +130,15 @@ function App() {
       title: { en: "Education", ja: "学歴" }
     },
     certifications: {
-      title: { en: "Certifications", ja: "資格" }
+      title: { en: "Certifications", ja: "資格" },
+      aws: {
+        title: "AWS Solution Architect - Associate",
+        date: { en: "March • 2025", ja: "2025年3月" }
+      },
+      ccna: {
+        title: "CCNA",
+        date: { en: "August • 2023", ja: "2023年8月" }
+      }
     },
     skills: {
       technical: { en: "Technical Skills", ja: "技術スキル" },
@@ -165,8 +173,8 @@ function App() {
 
   const skills = {
     technical: [
-      "AWS", "Azure", "Google Cloud", "Python", "Docker","Security", "TCP/IP",
-      "Linux", "Microsoft Windows", "Routing", "Switching"
+      "AWS", "Azure", "Google Cloud","Kubernetes", "Python", "Docker","Security", "TCP/IP",
+      "Linux : Ubuntu", "Windows Server: 2012,2016", "OSPF, EIGRP, STP, VLan, VPN, IPSec", "Cisco",
     ],
     tools: [
       "Git/GitHub", "Kubernetes", "Terraform", "Monitoring Tools",
@@ -404,10 +412,10 @@ function App() {
                     <div className="cert-info">
                       <h4 className="cert-title">
                         <a href="https://www.credly.com/badges/4c00d632-a4ce-4b0f-8c66-32e84b95b066/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
-                          AWS Solution Architect - Associate
+                          {content.certifications.aws.title}
                         </a>
                       </h4>
-                      <p className="cert-details">March • 2025</p>
+                      <p className="cert-details">{content.certifications.aws.date[language]}</p>
                     </div>
                   </div>
                   <div className="certification-item">
@@ -417,10 +425,10 @@ function App() {
                     <div className="cert-info">
                       <h4 className="cert-title">
                         <a href="https://www.credly.com/badges/3a99629f-eb49-40e7-a188-653ecde91df1/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
-                          CCNA
+                          {content.certifications.ccna.title}
                         </a>
                       </h4>
-                      <p className="cert-details">August • 2023</p>
+                      <p className="cert-details">{content.certifications.ccna.date[language]}</p>
                     </div>
                   </div>
                 </div>
