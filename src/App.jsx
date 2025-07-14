@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import awsLogo from './assets/certifications/aws-logo.png'
 import ciscoLogo from './assets/certifications/cisco-logo.png'
+import terraformLogo from './assets/certifications/terraform-logo.png'
 import project1Image from './assets/projects/project-1.png'
 import project2Image from './assets/projects/project-2.png'
 import eksImage from './assets/projects/eks.jpg'
@@ -110,7 +111,7 @@ function App() {
       title: { en: "About Me", ja: "自己紹介" },
       description1: {
         en: "Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, passionate about building and automating secure cloud infrastructure. I'm pursuing a BSc (Hons) in Computing from The Open University (UK) while working at Meisei Co., Ltd.",
-        ja: "初めまして、Than Tint Swe（タン ティン スウェ）と申します。名古屋在住のITエンジニア志望で、セキュアなクラウドインフラの構築と自動化に情熱を注いでいます。現在、明誠株式会社で働きながら、英国オープン大学でコンピュータ学の学士号（BSc Hons）を取得中です。"
+        ja: "初めまして、THAN TINT SWE（タン　ティン　スェー）と申します。名古屋在住のITエンジニア志望で、セキュアなクラウドインフラの構築と自動化に情熱を注いでいます。現在、明誠株式会社で働きながら、英国オープン大学でコンピュータ学の学士号（BSc Hons）を取得中です。"
       },
       description2: {
         en: "My expertise spans cloud infrastructure, DevOps, networking, and system administration, with hands-on experience in AWS, Terraform, Linux, Docker, and Git. I build real-world projects, like a high-availability AWS architecture using Terraform, ALB, and auto-scaling EC2 instances, to sharpen my skills.",
@@ -131,12 +132,26 @@ function App() {
     certifications: {
       title: { en: "Certifications", ja: "資格" },
       aws: {
-        title: "AWS Solution Architect - Associate",
+        title: { 
+          en: "AWS Solution Architect - Associate", 
+          ja: "AWS 認定ソリューションアーキテクト - アソシエイト" 
+        },
         date: { en: "March • 2025", ja: "2025年3月" }
       },
       ccna: {
-        title: "CCNA",
-        date: { en: "August • 2023", ja: "2023年8月" }
+        title: { 
+          en: "CCNA", 
+          ja: "CCNA認定（Cisco Certified Network Associate）" 
+        },
+        date: { en: "August • 2024", ja: "2024年8月" }
+      },
+      terraform: {
+        title: { 
+          en: "HashiCorp Certified: Terraform Associate", 
+          ja: "HashiCorp Certified: Terraform Associate" 
+        },
+        date: { en: "July 20 • 2025", ja: "2025年7月20日" },
+        status: { en: "Scheduled", ja: "受験予定" }
       }
     },
     skills: {
@@ -373,7 +388,11 @@ function App() {
                   <div className="education-icon">🎓</div>
                   <div className="education-details">
                     <h4 className="education-degree">BSc (Hons) in Computer Engineering</h4>
-                    <p className="education-school">The Open University - Milton Keynes, England</p>
+                    <p className="education-school">
+                      <a href="https://www.open.ac.uk/" target="_blank" rel="noopener noreferrer" className="education-link">
+                        The Open University - Milton Keynes, England
+                      </a>
+                    </p>
                     <p className="education-year">2024 - 2026</p>
                     <p className="education-description">
                       {language === 'en' ? (
@@ -399,44 +418,51 @@ function App() {
                   </div>
                 </div>
               </div>
-
-              {/* Certifications Subsection */}
-              <div id="certifications" className="certifications-section">
-                <h3 className="subsection-title">{content.certifications.title[language]}</h3>
-                <div className="certifications-compact">
-                  <div className="certification-item">
-                    <div className="cert-icon">
-                      <img src={awsLogo} alt="AWS" className="cert-logo" />
-                    </div>
-                    <div className="cert-info">
-                      <h4 className="cert-title">
-                        <a href="https://www.credly.com/badges/4c00d632-a4ce-4b0f-8c66-32e84b95b066/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
-                          {content.certifications.aws.title}
-                        </a>
-                      </h4>
-                      <p className="cert-details">{content.certifications.aws.date[language]}</p>
-                    </div>
-                  </div>
-                  <div className="certification-item">
-                    <div className="cert-icon">
-                      <img src={ciscoLogo} alt="Cisco" className="cert-logo" />
-                    </div>
-                    <div className="cert-info">
-                      <h4 className="cert-title">
-                        <a href="https://www.credly.com/badges/3a99629f-eb49-40e7-a188-653ecde91df1/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
-                          {content.certifications.ccna.title}
-                        </a>
-                      </h4>
-                      <p className="cert-details">{content.certifications.ccna.date[language]}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
           {/* Skills Section - Full Width Below */}
           <div className="skills-content">
+            {/* Certifications Section - Full Width */}
+            <div className="skills-category" id="certifications">
+              <h3 className="skills-category-title">{content.certifications.title[language]}</h3>
+              <div className="certifications-grid">
+                <div className="certification-item-card">
+                  <div className="cert-icon">
+                    <img src={awsLogo} alt="AWS" className="cert-logo" />
+                  </div>
+                  <h4 className="cert-title">
+                    <a href="https://www.credly.com/badges/4c00d632-a4ce-4b0f-8c66-32e84b95b066/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
+                      {content.certifications.aws.title[language]}
+                    </a>
+                  </h4>
+                  <p className="cert-details">{content.certifications.aws.date[language]}</p>
+                </div>
+                <div className="certification-item-card">
+                  <div className="cert-icon">
+                    <img src={ciscoLogo} alt="Cisco" className="cert-logo" />
+                  </div>
+                  <h4 className="cert-title">
+                    <a href="https://www.credly.com/badges/3a99629f-eb49-40e7-a188-653ecde91df1/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
+                      {content.certifications.ccna.title[language]}
+                    </a>
+                  </h4>
+                  <p className="cert-details">{content.certifications.ccna.date[language]}</p>
+                </div>
+                <div className="certification-item-card cert-scheduled">
+                  <div className="cert-icon">
+                    <img src={terraformLogo} alt="Terraform" className="cert-logo" />
+                  </div>
+                  <h4 className="cert-title">
+                    {content.certifications.terraform.title[language]}
+                  </h4>
+                  <p className="cert-details">
+                    {content.certifications.terraform.date[language]} • {content.certifications.terraform.status[language]}
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="skills-category">
               <h3 className="skills-category-title">{content.skills.technical[language]}</h3>
               <div className="skills-grid">
