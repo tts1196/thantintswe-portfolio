@@ -1,12 +1,59 @@
-# React + Vite
+# Than Tint Swe - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional bilingual (English/Japanese) portfolio website built with React and Vite.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
+Visit: [https://thantintswe.me](https://thantintswe.me)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+- **Frontend**: React 19.1.0
+- **Build Tool**: Vite 6.3.5
+- **Styling**: CSS3 with CSS Variables
+- **Deployment**: GitHub Pages
+- **CI/CD**: AWS CodeBuild (buildspec.yml)
 
-## Expanding the ESLint configuration
+## 📋 Features
+- Bilingual support (English/Japanese)
+- Responsive design
+- Interactive navigation
+- Project showcase
+- Certification display
+- Resume downloads
+- Contact information
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚦 Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+## 📁 Project Structure
+```
+src/
+├── App.jsx          # Main component
+├── App.css          # All styles
+├── main.jsx         # Entry point
+└── assets/          # Images and assets
+    ├── certifications/
+    └── projects/
+```
+
+## 🔧 Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run deploy` - Deploy to GitHub Pages
+- `npm run lint` - Run ESLint
+
+---
+Built with ❤️ for the Japanese tech market
