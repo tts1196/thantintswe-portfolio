@@ -635,7 +635,7 @@ section {
   display: grid;
   grid-template-columns: 60% 40%;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .right-sidebar {
@@ -664,6 +664,10 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   animation: fadeInRight 1s ease-out 0.2s both;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @keyframes fadeInRight {
@@ -703,14 +707,14 @@ section {
 }
 
 .education-item-compact .education-degree {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
   color: var(--text-primary);
 }
 
 .education-item-compact .education-school {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--primary-color);
   font-weight: 600;
   margin-bottom: 0.25rem;
@@ -736,8 +740,8 @@ section {
 
 .education-item-compact .education-description {
   color: var(--text-secondary);
-  line-height: 1.5;
-  font-size: 1rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
 }
 
 /* Updated About Content (Right Side) */
@@ -751,6 +755,9 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   animation: fadeInLeft 1s ease-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes fadeInLeft {
@@ -774,19 +781,20 @@ section {
 }
 
 .about-description {
-  font-size: 1.25rem;
+  font-size: 2rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  line-height: 2;
+  line-height: 1.8;
   word-break: break-word;
   letter-spacing: 0.01em;
+  font-weight: 600;
 }
 
 .about-description-ja {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text-light);
   margin-bottom: 2rem;
-  line-height: 2;
+  line-height: 1.9;
   font-style: italic;
   padding: 1rem;
   background-color: var(--bg-secondary);

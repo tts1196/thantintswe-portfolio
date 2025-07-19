@@ -110,20 +110,16 @@ function App() {
     about: {
       title: { en: "About Me", ja: "自己紹介" },
       description1: {
-        en: "Hi, I'm Than Tint Swe, an aspiring IT engineer based in Nagoya, Japan, passionate about building and automating secure cloud infrastructure. I'm pursuing a BSc (Hons) in Computing from The Open University (UK) while working at Meisei Co., Ltd.",
-        ja: "初めまして、THAN TINT SWE（タン　ティン　スェー）と申します。名古屋在住のITエンジニア志望で、セキュアなクラウドインフラの構築と自動化に情熱を注いでいます。現在、明誠株式会社で働きながら、英国オープン大学でコンピュータ学の学士号（BSc Hons）を取得中です。"
+        en: "Hi, I'm Than Tint Swe, an aspiring IT engineer in Nagoya, Japan, passionate about crafting secure, scalable cloud infrastructure. I'm pursuing a BSc (Hons) in Computing from The Open University (UK) while working at Meisei Co., Ltd.",
+        ja: "はじめまして、名古屋在住のITエンジニアを目指すタン ティン スェーです。クラウドインフラの構築に情熱を持っています。英国オープン大学でコンピューティングの学士号を取得中であり、明誠株式会社で働いています。"
       },
       description2: {
-        en: "My expertise spans cloud infrastructure, DevOps, networking, and system administration, with hands-on experience in AWS, Terraform, Linux, Docker, and Git. I build real-world projects, like a high-availability AWS architecture using Terraform, ALB, and auto-scaling EC2 instances, to sharpen my skills.",
-        ja: "クラウドインフラ、DevOps、ネットワーク、システム管理を専門とし、AWS、Terraform、Linux、Docker、Gitを活用した実務経験があります。たとえば、Terraform、ALB、Auto Scaling EC2を用いた高可用性AWSアーキテクチャを構築し、スキルを磨いています。"
+        en: "I specialize in building high-availability AWS architectures using Terraform, ALB, and auto-scaling EC2 instances for efficiency and resilience, alongside automating infrastructure, managing Linux servers, and containerizing applications with Docker.",
+        ja: "Terraform、ALB、EC2オートスケーリングを使用した高可用性AWSアーキテクチャの構築、Linuxサーバー管理、Dockerでのコンテナ化に取り組んでいます。"
       },
       description3: {
-        en: "I'm preparing for the JLPT N2 to thrive in Japan's dynamic tech industry. I'm seeking entry-level Cloud, DevOps, or Infrastructure Engineering roles where I can contribute technical expertise and a collaborative, growth-oriented mindset.",
-        ja: "日本のテック業界で活躍するため、JLPT N2取得を目指して勉強中です。クラウド、DevOps、インフラエンジニアリングのエントリーポジションで、技術力とチームワークを活かして貢献したいと考えています。"
-      },
-      description4: {
-        en: "If you're hiring or working on exciting projects, let's connect!",
-        ja: "面白いプロジェクトに取り組む方や採用担当の方、ぜひご連絡ください！"
+        en: "Preparing for JLPT N2, I'm eager to join innovative cloud projects—connect with me on LinkedIn!",
+        ja: "JLPT N2取得を目指し、日本のテック業界に貢献したいと考えています。LinkedInでぜひご連絡ください！"
       }
     },
     education: {
@@ -372,9 +368,6 @@ function App() {
                 </p>
                 <p className="about-description">
                   {content.about.description3[language]}
-                </p>
-                <p className="about-description">
-                  {content.about.description4[language]}
                 </p>
               </div>
             </div>
