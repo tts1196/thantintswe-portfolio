@@ -110,16 +110,16 @@ function App() {
     about: {
       title: { en: "About Me", ja: "自己紹介" },
       description1: {
-        en: "Hi, I'm Than Tint Swe, an aspiring IT engineer in Nagoya, Japan, passionate about crafting secure, scalable cloud infrastructure. I'm pursuing a BSc (Hons) in Computing from The Open University (UK) while working at Meisei Co., Ltd.",
-        ja: "はじめまして、名古屋在住のITエンジニアを目指すタン ティン スェーです。クラウドインフラの構築に情熱を持っています。英国オープン大学でコンピューティングの学士号を取得中であり、明誠株式会社で働いています。"
+        en: "Hello! I'm Than Tint Swe, based in Nagoya, and currently working toward launching my career as an infrastructure or network engineer. I'm pursuing a BSc in Computing at The Open University (UK) and working at Meisei Co., Ltd.",
+        ja: "はじめまして、名古屋在住のITエンジニア志望のタン ティン スェーです。現在はインフラエンジニアまたはネットワークエンジニアとしてのキャリアをスタートさせるために取り組んでいます。英国オープン大学でコンピューティングの学士号を取得中であり、明誠株式会社で勤務しています。"
       },
       description2: {
-        en: "I specialize in building high-availability AWS architectures using Terraform, ALB, and auto-scaling EC2 instances for efficiency and resilience, alongside automating infrastructure, managing Linux servers, and containerizing applications with Docker.",
-        ja: "Terraform、ALB、EC2オートスケーリングを使用した高可用性AWSアーキテクチャの構築、Linuxサーバー管理、Dockerでのコンテナ化に取り組んでいます。"
+        en: "I have experience building highly available AWS architectures using Terraform, ALB, and EC2 Auto Scaling, as well as managing both Linux and Windows servers. I'm also familiar with Docker for containerization and have been studying the configuration and operation of Cisco routers and switches to deepen my understanding of network infrastructure.",
+        ja: "AWS環境におけるTerraform、ALB、EC2オートスケーリングを用いた高可用性アーキテクチャの構築や、Linux/Windowsサーバーの管理、Dockerによるコンテナ化の経験があります。また、Ciscoルーターやスイッチの基本的な設定・操作にも取り組んでおり、ネットワークインフラの理解を深めています。"
       },
       description3: {
-        en: "Preparing for JLPT N2, I'm eager to join innovative cloud projects—connect with me on LinkedIn!",
-        ja: "JLPT N2取得を目指し、日本のテック業界に貢献したいと考えています。LinkedInでぜひご連絡ください！"
+        en: "I'm actively working toward passing the JLPT N2 exam and hope to contribute to Japan's tech industry as a reliable infrastructure or network engineer. Please feel free to connect with me on LinkedIn!",
+        ja: "JLPT N2の取得を目指しており、日本のIT業界でインフラ・ネットワーク分野に貢献できるエンジニアを目指しています。LinkedInでもお気軽にご連絡ください！"
       }
     },
     education: {
