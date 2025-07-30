@@ -11,7 +11,7 @@ import githubLogo from './assets/github-logo.svg'
 function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [language, setLanguage] = useState('en') // 'en' or 'ja'
+  const [language, setLanguage] = useState('ja') // 'en' or 'ja'
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -146,8 +146,7 @@ function App() {
           en: "HashiCorp Certified: Terraform Associate", 
           ja: "HashiCorp Certified: Terraform Associate" 
         },
-        date: { en: "July 20 • 2025", ja: "2025年7月20日" },
-        status: { en: "Scheduled", ja: "受験予定" }
+        date: { en: "July • 2025", ja: "2025年7月" }
       }
     },
     skills: {
@@ -442,7 +441,7 @@ function App() {
                   </h4>
                   <p className="cert-details">{content.certifications.ccna.date[language]}</p>
                 </div>
-                <div className="certification-item-card cert-scheduled">
+                <div className="certification-item-card">
                   <div className="cert-icon">
                     <img src={terraformLogo} alt="Terraform" className="cert-logo" />
                   </div>
@@ -450,7 +449,7 @@ function App() {
                     {content.certifications.terraform.title[language]}
                   </h4>
                   <p className="cert-details">
-                    {content.certifications.terraform.date[language]} • {content.certifications.terraform.status[language]}
+                    {content.certifications.terraform.date[language]}
                   </p>
                 </div>
               </div>
