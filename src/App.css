@@ -43,6 +43,34 @@ body {
   background: var(--gradient-subtle);
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Mobile optimizations */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Mobile touch optimizations */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection for content */
+p, span, h1, h2, h3, h4, h5, h6, li, td, th, input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Ensure proper box sizing for all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 /* Enhanced text rendering for multilingual content */
@@ -50,6 +78,26 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Improve mobile performance */
+.hero, .section {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Better image handling for mobile */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Smooth scrollbar styling */
@@ -265,7 +313,8 @@ p, li, span, div {
 @media (max-width: 768px) {
   .nav-content {
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
+    position: relative;
   }
 
   .nav-links {
@@ -280,11 +329,13 @@ p, li, span, div {
     box-shadow: var(--shadow-xl);
     border-radius: 1rem;
     border: 1px solid var(--border-color);
-    min-width: 200px;
+    min-width: 250px;
+    max-width: 90vw;
     gap: 0.5rem;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 1000;
   }
 
   .nav-links-open {
@@ -296,23 +347,63 @@ p, li, span, div {
   .nav-link {
     border-radius: 0.5rem;
     text-align: center;
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-link:hover, .nav-link:focus {
+    background-color: var(--bg-secondary);
   }
 
   .mobile-menu-btn {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    gap: 4px;
   }
 
   .mobile-menu-btn span {
+    width: 24px;
+    height: 3px;
     background-color: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
 
   .nav-controls {
     gap: 0.5rem;
+    align-items: center;
   }
 
   .language-toggle {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .language-toggle:hover, .language-toggle:focus {
+    background-color: var(--bg-secondary);
+    border-color: var(--primary-color);
   }
 }
 
@@ -635,7 +726,7 @@ section {
   display: grid;
   grid-template-columns: 60% 40%;
   gap: 3rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .right-sidebar {
@@ -664,10 +755,6 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   animation: fadeInRight 1s ease-out 0.2s both;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 @keyframes fadeInRight {
@@ -707,14 +794,14 @@ section {
 }
 
 .education-item-compact .education-degree {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
   color: var(--text-primary);
 }
 
 .education-item-compact .education-school {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--primary-color);
   font-weight: 600;
   margin-bottom: 0.25rem;
@@ -740,8 +827,8 @@ section {
 
 .education-item-compact .education-description {
   color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 1.05rem;
+  line-height: 1.5;
+  font-size: 1rem;
 }
 
 /* Updated About Content (Right Side) */
@@ -755,9 +842,6 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   animation: fadeInLeft 1s ease-out;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 @keyframes fadeInLeft {
@@ -781,20 +865,19 @@ section {
 }
 
 .about-description {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  line-height: 1.8;
+  line-height: 2;
   word-break: break-word;
   letter-spacing: 0.01em;
-  font-weight: 600;
 }
 
 .about-description-ja {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-light);
   margin-bottom: 2rem;
-  line-height: 1.9;
+  line-height: 2;
   font-style: italic;
   padding: 1rem;
   background-color: var(--bg-secondary);
@@ -1643,8 +1726,16 @@ section {
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
   .nav-menu {
     display: none;
+  }
+
+  .hero {
+    padding: 6rem 0 4rem;
   }
 
   .hero-container {
@@ -1655,10 +1746,28 @@ section {
 
   .hero-title {
     font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    max-width: none;
   }
 
   .hero-buttons {
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
   }
 
   .about-education-layout {
@@ -1683,36 +1792,37 @@ section {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+    padding: 1.5rem;
   }
 
   .certifications-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
   .certification-item-card {
-    padding: 1rem 0.5rem;
-    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    gap: 0.75rem;
   }
   
   .certification-item-card .cert-logo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
   
   .certification-item-card .cert-title {
-    font-size: 0.8rem;
-    line-height: 1.2;
+    font-size: 0.9rem;
+    line-height: 1.3;
   }
   
   .certification-item-card .cert-details {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .project-layout-horizontal {
     flex-direction: column;
     padding: 1.5rem;
-    gap: 1rem;
+    gap: 1.5rem;
     min-height: auto;
   }
 
@@ -1724,13 +1834,22 @@ section {
   .project-diagram-right {
     flex: none;
     order: 1;
-    min-height: 250px;
-    max-height: 300px;
-    padding: 0.5rem;
+    min-height: 300px;
+    max-height: 400px;
+    padding: 1rem;
   }
 
   .project-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+  }
+
+  .project-tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
   }
 
   .contact-content {
@@ -1738,10 +1857,29 @@ section {
     gap: 2rem;
   }
 
+  .contact-form {
+    order: 1;
+  }
+
+  .contact-info {
+    order: 2;
+  }
+
   .footer-content {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+
+  /* Form improvements for mobile */
+  .form-group input,
+  .form-group textarea {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .form-group textarea {
+    min-height: 120px;
   }
 }
 
@@ -1754,12 +1892,35 @@ section {
     padding: 0 1rem;
   }
 
+  .nav-content {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    min-width: 200px;
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 5rem 0 3rem;
+  }
+
   .hero-container {
     padding: 0 1rem;
+    gap: 1.5rem;
   }
 
   .hero-title {
     font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
   }
 
   .profile-image {
@@ -1769,5 +1930,94 @@ section {
 
   .image-placeholder {
     font-size: 3rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .certification-item-card {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .certification-item-card .cert-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .certification-item-card .cert-title {
+    font-size: 1rem;
+  }
+
+  .certification-item-card .cert-details {
+    font-size: 0.9rem;
+  }
+
+  .project-layout-horizontal {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+  }
+
+  .project-tech-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  /* Improve form elements on small screens */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  /* Better spacing for contact section */
+  .contact-content {
+    gap: 1.5rem;
+  }
+
+  .contact-info-item {
+    padding: 1rem;
   }
 }
