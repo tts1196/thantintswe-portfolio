@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import awsLogo from './assets/certifications/aws-logo.png'
 import ciscoLogo from './assets/certifications/cisco-logo.png'
-import terraformLogo from './assets/certifications/terraform-logo.png'
 import kubernetesLogo from './assets/certifications/kubernetes-logo.png'
 import project1Image from './assets/projects/project-1.png'
 import project2Image from './assets/projects/project-2.png'
@@ -141,13 +140,6 @@ function App() {
           ja: "CCNA認定（Cisco Certified Network Associate）" 
         },
         date: { en: "August • 2024", ja: "2024年8月" }
-      },
-      terraform: {
-        title: { 
-          en: "HashiCorp Certified: Terraform Associate", 
-          ja: "HashiCorp Certified: Terraform Associate" 
-        },
-        date: { en: "July • 2025", ja: "2025年7月" }
       },
       cka: {
         title: { 
@@ -449,17 +441,6 @@ function App() {
                     </a>
                   </h4>
                   <p className="cert-details">{content.certifications.ccna.date[language]}</p>
-                </div>
-                <div className="certification-item-card">
-                  <div className="cert-icon">
-                    <img src={terraformLogo} alt="Terraform" className="cert-logo" />
-                  </div>
-                  <h4 className="cert-title">
-                    {content.certifications.terraform.title[language]}
-                  </h4>
-                  <p className="cert-details">
-                    {content.certifications.terraform.date[language]}
-                  </p>
                 </div>
                 <div className="certification-item-card cert-scheduled">
                   <div className="cert-icon">
