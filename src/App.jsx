@@ -3,6 +3,7 @@ import './App.css'
 import awsLogo from './assets/certifications/aws-logo.png'
 import ciscoLogo from './assets/certifications/cisco-logo.png'
 import terraformLogo from './assets/certifications/terraform-logo.png'
+import kubernetesLogo from './assets/certifications/kubernetes-logo.png'
 import project1Image from './assets/projects/project-1.png'
 import project2Image from './assets/projects/project-2.png'
 import eksImage from './assets/projects/eks.jpg'
@@ -147,6 +148,14 @@ function App() {
           ja: "HashiCorp Certified: Terraform Associate" 
         },
         date: { en: "July • 2025", ja: "2025年7月" }
+      },
+      cka: {
+        title: { 
+          en: "Certified Kubernetes Administrator (CKA)", 
+          ja: "認定Kubernetesアドミニストレーター (CKA)" 
+        },
+        date: { en: "August 25 • 2025", ja: "2025年8月25日" },
+        status: { en: "Exam Scheduled", ja: "試験予定" }
       }
     },
     skills: {
@@ -450,6 +459,20 @@ function App() {
                   </h4>
                   <p className="cert-details">
                     {content.certifications.terraform.date[language]}
+                  </p>
+                </div>
+                <div className="certification-item-card cert-scheduled">
+                  <div className="cert-icon">
+                    <img src={kubernetesLogo} alt="Kubernetes" className="cert-logo" />
+                  </div>
+                  <h4 className="cert-title">
+                    {content.certifications.cka.title[language]}
+                  </h4>
+                  <p className="cert-details">
+                    {content.certifications.cka.date[language]}
+                  </p>
+                  <p className="cert-status">
+                    {content.certifications.cka.status[language]}
                   </p>
                 </div>
               </div>
