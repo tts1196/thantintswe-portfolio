@@ -442,20 +442,7 @@ function App() {
                   </h4>
                   <p className="cert-details">{content.certifications.ccna.date[language]}</p>
                 </div>
-                <div className="certification-item-card cert-scheduled">
-                  <div className="cert-icon">
-                    <img src={kubernetesLogo} alt="Kubernetes" className="cert-logo" />
-                  </div>
-                  <h4 className="cert-title">
-                    {content.certifications.cka.title[language]}
-                  </h4>
-                  <p className="cert-details">
-                    {content.certifications.cka.date[language]}
-                  </p>
-                  <p className="cert-status">
-                    {content.certifications.cka.status[language]}
-                  </p>
-                </div>
+                
               </div>
             </div>
 
