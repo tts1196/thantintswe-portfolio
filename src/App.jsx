@@ -141,14 +141,14 @@ function App() {
         },
         date: { en: "August • 2024", ja: "2024年8月" }
       },
-      cka: {
+      /*cka: {
         title: { 
           en: "Certified Kubernetes Administrator (CKA)", 
           ja: "認定Kubernetesアドミニストレーター (CKA)" 
         },
         date: { en: "August 25 • 2025", ja: "2025年8月25日" },
         status: { en: "Exam Scheduled", ja: "試験予定" }
-      }
+      }*/
     },
     skills: {
       technical: { en: "Technical Skills", ja: "技術スキル" },
