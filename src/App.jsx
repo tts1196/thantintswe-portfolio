@@ -141,14 +141,13 @@ function App() {
         },
         date: { en: "August • 2024", ja: "2024年8月" }
       },
-      /*cka: {
+      cka: {
         title: { 
           en: "Certified Kubernetes Administrator (CKA)", 
           ja: "認定Kubernetesアドミニストレーター (CKA)" 
         },
-        date: { en: "August 25 • 2025", ja: "2025年8月25日" },
-        status: { en: "Exam Scheduled", ja: "試験予定" }
-      }*/
+        date: { en: "January • 2026", ja: "2026年1月" }
+      }
     },
     skills: {
       technical: { en: "Technical Skills", ja: "技術スキル" },
@@ -442,7 +441,19 @@ function App() {
                   </h4>
                   <p className="cert-details">{content.certifications.ccna.date[language]}</p>
                 </div>
-                
+                <div className="certification-item-card">
+                  <div className="cert-icon">
+                    <img src={kubernetesLogo} alt="Kubernetes" className="cert-logo" />
+                  </div>
+                  <h4 className="cert-title">
+                    <a href="https://www.credly.com/badges/252fb18a-b4ca-46e5-99dd-19f8ff83912f/public_url" target="_blank" rel="noopener noreferrer" className="cert-link">
+                      {content.certifications.cka.title[language]}
+                    </a>
+                  </h4>
+                  <p className="cert-details">
+                    {content.certifications.cka.date[language]}
+                  </p>
+                </div>
               </div>
             </div>
 
